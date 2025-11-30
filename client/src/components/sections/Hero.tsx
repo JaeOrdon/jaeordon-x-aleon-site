@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroImage from "@assets/generated_images/cinematic_dark_moody_artist_portrait.png";
+import heroImage from "@assets/image_1764473686174.png";
 
 export default function Hero() {
   return (
