@@ -59,21 +59,27 @@ export default function About() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <img 
-              src={pianoImage} 
-              alt="Jae at the piano" 
-              className="w-full aspect-video object-cover"
-            />
-            <img 
-              src={liveImage} 
-              alt="Jae performing live" 
-              className="w-full aspect-video object-cover"
-            />
-            <img 
-              src={cuttingRoomImage} 
-              alt="Jae in the cutting room" 
-              className="w-full aspect-video object-cover"
-            />
+            <div className="w-full h-64 md:h-auto relative">
+              <img 
+                src={pianoImage} 
+                alt="Jae at the piano" 
+                className="w-full h-full object-contain bg-black/20"
+              />
+            </div>
+            <div className="w-full h-64 md:h-auto relative">
+              <img 
+                src={liveImage} 
+                alt="Jae performing live" 
+                className="w-full h-full object-contain bg-black/20"
+              />
+            </div>
+            <div className="w-full h-64 md:h-auto relative">
+              <img 
+                src={cuttingRoomImage} 
+                alt="Jae in the cutting room" 
+                className="w-full h-full object-contain bg-black/20"
+              />
+            </div>
           </div>
         </div>
       </section>
