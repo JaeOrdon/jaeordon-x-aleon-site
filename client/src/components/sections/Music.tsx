@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
 import { Play, ArrowUpRight } from "lucide-react";
-import album1 from "@assets/generated_images/abstract_album_cover_folk_jazz_rock.png";
-import album2 from "@assets/generated_images/psychedelic_r&b_album_cover.png";
+import album1 from "@assets/Shake_Your_Groovy_Bird_Feather_ALBUM_COVER_1764875387489.png";
+import album2 from "@assets/keys_piano_dancing_1764875387489.jpg";
+import album3 from "@assets/Scan_2_1764875387489.jpg";
 
 const releases = [
   {
-    title: "Reaching Thru a Plastic Jazzy",
-    type: "EP / Playlist",
+    title: "Shake Your Groovy Bird Feather",
+    type: "Latest Release",
     image: album1,
+    link: "#",
+    platform: "Spotify"
+  },
+  {
+    title: "Keys Piano Dancing",
+    type: "Single",
+    image: album2,
     link: "#",
     platform: "SoundCloud"
   },
   {
     title: "Heroes in the Dark",
     type: "Single",
-    image: album2,
-    link: "#",
-    platform: "Bandcamp"
-  },
-  {
-    title: "A Puddle Driving Down the Street",
-    type: "Album",
-    image: album1, // Reusing for layout demo
+    image: album3, 
     link: "#",
     platform: "Bandcamp"
   }
