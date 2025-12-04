@@ -3,11 +3,19 @@ import { Play, ArrowUpRight } from "lucide-react";
 import album1 from "@assets/Shake_Your_Groovy_Bird_Feather_ALBUM_COVER_1764875387489.png";
 import album2 from "@assets/keys_piano_dancing_1764875387489.jpg";
 import album3 from "@assets/Scan_2_1764875387489.jpg";
+import madmanArt from "@assets/horpsy_madman_1764875524054.png";
 
 const releases = [
   {
-    title: "Shake Your Groovy Bird Feather",
+    title: "Madman's Warehouse",
     type: "Latest Release",
+    image: madmanArt,
+    link: "#",
+    platform: "Spotify"
+  },
+  {
+    title: "Shake Your Groovy Bird Feather",
+    type: "Album",
     image: album1,
     link: "#",
     platform: "Spotify"
@@ -46,7 +54,7 @@ export default function Music() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-6">
           {releases.map((release, index) => (
             <motion.div
               key={index}
