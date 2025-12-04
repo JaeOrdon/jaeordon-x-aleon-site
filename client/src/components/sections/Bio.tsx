@@ -3,9 +3,9 @@ import { Separator } from "@/components/ui/separator";
 import bioImage from "@assets/you_are_the_light_canvas_1764875387489.jpg";
 
 const stats = [
-  { value: "25k+", label: "Total Plays" },
-  { value: "1.2k", label: "Followers" },
-  { value: "30k+", label: "Views" },
+  { value: "110k+", label: "Total Plays" },
+  { value: "400k", label: "Followers" },
+  { value: "300k+", label: "Views" },
 ];
 
 export default function Bio() {
