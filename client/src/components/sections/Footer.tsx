@@ -1,4 +1,4 @@
-import { Instagram, Youtube, Music, CloudLightning } from "lucide-react";
+import { CloudLightning, Music, Disc, Radio } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,17 +11,41 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-6">
-          <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
-            <Instagram size={20} />
+          <a 
+            href="https://soundcloud.com/j_ordon" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+            aria-label="SoundCloud"
+          >
+            <CloudLightning size={20} />
           </a>
-          <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
-            <Youtube size={20} />
+          <a 
+            href="https://jaeordon.bandcamp.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+            aria-label="Bandcamp"
+          >
+            <Disc size={20} />
           </a>
-          <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+          <a 
+            href="https://music.apple.com/us/artist/jae-ordon/1566141772" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+            aria-label="Apple Music"
+          >
             <Music size={20} />
           </a>
-          <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
-            <CloudLightning size={20} />
+          <a 
+            href="https://open.spotify.com/artist/5S0RsBShI3xk8bUix0JfpO" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+            aria-label="Spotify"
+          >
+            <Radio size={20} />
           </a>
         </div>
         
