@@ -46,15 +46,17 @@ export default function About() {
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="prose prose-invert prose-lg max-w-none">
-            <p>
-              His artistry has been featured in Time Out New York and recognized by ASCAP’s 
-              exclusive songwriter workshops. Jae has collaborated with icons connected to 
-              Michael McDonald, John Mayer, Christopher Cross, and even The Gorillaz.
+            <p className="font-bold text-xl text-white mb-6">
+              Jim Beard, who was a world renowned jazz pianist for Steely Dan - (referring to Jae’s Nashville album), states “Congratulations on a marvelous album Jae!”.
             </p>
             <p>
-              More than just a musician, Jae is a visual artist whose sketches and paintings 
-              often inform his musical compositions. His creative process is a dialogue 
-              between sight and sound.
+              This ground breaking album had one of it’s recordings entitled Life Whispers On, reach #7 on Canada’s Cashbox Radio in the August of 2024.
+            </p>
+            <p>
+              Disc Jockey Dave Michaels for Albany’s  WEXT radio responds to Jae Ordon’s music, proclaiming….”These recordings are masterpieces!”.
+            </p>
+            <p>
+              Jae Ordon, (AKA Mascot’s Distance) sings his Folk-Jazz-Rock compositions while accompanying himself on piano and guitar has been featured in Time Out New York and was also chosen to be a featured artist at two exclusive ASCAP workshops.  He has worked with Ian Gillan of Deep Purple, Michael McDonald’s horn section, member’s of John Mayer’s band, Christopher Cross’s band Robben Ford’s bass player Brian Allen, Lori McKenna’s drummer Wes Little, Brittany Murphy, Karen and more.
             </p>
           </div>
 
@@ -84,6 +86,41 @@ export default function About() {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="py-20 px-6 bg-white/5">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-serif font-bold text-white mb-12 text-center">
+            CRITICS SAY
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-black/40 p-8 border border-white/10">
+              <p className="text-gray-300 italic mb-6 leading-relaxed">
+                “Mascot’s Distance, at last an original sound in that spiny, sparkling streak of sardonic American music occupied by Steely Dan. Very reminiscent of the seductive hooks & jazz influenced energy featured in the great work of The Style Council.”
+              </p>
+              <p className="text-accent font-bold text-sm uppercase tracking-widest">
+                — Robert Whyte (The Village Voice)
+              </p>
+            </div>
+            <div className="bg-black/40 p-8 border border-white/10">
+              <p className="text-gray-300 italic mb-6 leading-relaxed">
+                “It would be too easy to write off Mascot’s Distance as disciples of Ben Folds Five or Keane. Sure, they all boast stellar line-ups and ultra catchy melodies, but that is as far as the comparisons should go. Musically, they venture into the jazz influenced pop realm of Steely Dan, complete with all of the dark humor.”
+              </p>
+              <p className="text-accent font-bold text-sm uppercase tracking-widest">
+                — Marco Passarelli (The New Yorker Magazine)
+              </p>
+            </div>
+            <div className="bg-black/40 p-8 border border-white/10">
+              <p className="text-gray-300 italic mb-6 leading-relaxed">
+                “The use of sweet chords & rhythms combined with bitter lyrics, a pervasive thread in the efforts of Mascot’s Distance. The synthesis of jazzy, poppy melodic hooks with a glimmering glimpse of the darker side of the picket fence apple pie America.”
+              </p>
+              <p className="text-accent font-bold text-sm uppercase tracking-widest">
+                — A.J. Maloney (New York Times)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Visual Art Gallery */}
       <section className="py-20 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
@@ -97,12 +134,12 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="aspect-[3/4] relative group overflow-hidden"
+                className="h-[500px] relative group overflow-hidden bg-black/20"
               >
                 <img 
                   src={art} 
                   alt={`Artwork ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </motion.div>
             ))}

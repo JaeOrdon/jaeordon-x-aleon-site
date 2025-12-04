@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
 import { Play, ArrowUpRight } from "lucide-react";
-import album1 from "@assets/Shake_Your_Groovy_Bird_Feather_ALBUM_COVER_1764875387489.png";
-import album2 from "@assets/keys_piano_dancing_1764875387489.jpg";
-import album3 from "@assets/Scan_2_1764875387489.jpg";
+import masterpieceArt from "@assets/masterpiece_cover.jpg";
+import plasticNightArt from "@assets/keys_piano_dancing_1764875387489.jpg";
+import heroesArt from "@assets/Scan_2_1764875387489.jpg";
 import madmanArt from "@assets/horpsy_madman_1764875524054.png";
+import { motion } from "framer-motion";
 
 const releases = [
   {
@@ -14,23 +14,23 @@ const releases = [
     platform: "Spotify"
   },
   {
-    title: "Shake Your Groovy Bird Feather",
-    type: "Album",
-    image: album1,
-    link: "#",
+    title: "Ain't That Like My Masterpiece",
+    type: "Single",
+    image: masterpieceArt,
+    link: "https://open.spotify.com/track/3DPBvXAjOU8vgr8VWeLyTd?si=dda6976d00ee4da1",
     platform: "Spotify"
   },
   {
-    title: "Keys Piano Dancing",
-    type: "Single",
-    image: album2,
-    link: "#",
+    title: "A Jazzy Plastic Night",
+    type: "Playlist",
+    image: plasticNightArt,
+    link: "https://soundcloud.com/j_ordon/sets/reaching-thru-a-plastic-jazzy?si=82df597d85ca45039a35baf5b4ad1943&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
     platform: "SoundCloud"
   },
   {
     title: "Heroes in the Dark",
     type: "Single",
-    image: album3, 
+    image: heroesArt, 
     link: "#",
     platform: "Bandcamp"
   }
@@ -56,13 +56,16 @@ export default function Music() {
 
         <div className="grid md:grid-cols-4 gap-6">
           {releases.map((release, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={release.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group cursor-pointer"
+              className="group cursor-pointer block"
             >
               <div className="relative aspect-square overflow-hidden bg-black mb-6">
                 <img 
@@ -81,14 +84,14 @@ export default function Music() {
                 <div className="text-xs font-bold tracking-widest text-accent uppercase">
                   {release.type}
                 </div>
-                <h4 className="text-2xl font-serif font-bold text-white group-hover:text-primary transition-colors">
+                <h4 className="text-2xl font-serif font-bold text-white group-hover:text-primary transition-colors leading-tight">
                   {release.title}
                 </h4>
                 <p className="text-muted-foreground text-sm">
-                  Available on {release.platform}
+                  Listen on {release.platform}
                 </p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

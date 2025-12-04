@@ -7,7 +7,7 @@ export default function Footer() {
         
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-serif font-bold text-white mb-2">JAE ORDON</h2>
-          <p className="text-muted-foreground text-sm">© 2024 Jae Ordon Music. All rights reserved.</p>
+          <p className="text-muted-foreground text-sm">© 2026 Jae Ordon Music. All rights reserved.</p>
         </div>
 
         <div className="flex gap-6">
