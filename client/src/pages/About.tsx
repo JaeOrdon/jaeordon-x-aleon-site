@@ -4,9 +4,12 @@ import { Separator } from "@/components/ui/separator";
 import bioImage from "@assets/20201128_113409_1764875387489.jpg";
 import pianoImage from "@assets/Jae_piano_1764875387489.jpg";
 import liveImage from "@assets/jAE_MAKE_MUSIC_1764875387489.jpeg";
+import cuttingRoomImage from "@assets/jae_cutting_room_1764875524054.jpeg";
 import art1 from "@assets/1960's_1764875387489.jpg";
 import art2 from "@assets/a_stairway_to_mid_level_management_1764875387489.jpeg";
 import art3 from "@assets/dancer_1764875387489.jpeg";
+import art4 from "@assets/balloon_machine_2_1764875524054.jpg";
+import art5 from "@assets/brick_face__1764875524054.jpg";
 
 export default function About() {
   return (
@@ -55,7 +58,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <img 
               src={pianoImage} 
               alt="Jae at the piano" 
@@ -64,6 +67,11 @@ export default function About() {
             <img 
               src={liveImage} 
               alt="Jae performing live" 
+              className="w-full aspect-video object-cover"
+            />
+            <img 
+              src={cuttingRoomImage} 
+              alt="Jae in the cutting room" 
               className="w-full aspect-video object-cover"
             />
           </div>
@@ -77,7 +85,7 @@ export default function About() {
             VISUAL DIARY
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[art1, art2, art3].map((art, index) => (
+            {[art1, art2, art3, art4, art5].map((art, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
