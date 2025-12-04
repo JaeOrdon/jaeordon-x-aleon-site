@@ -7,16 +7,11 @@ import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
-      <div className="grain" />
-      <Navbar />
-      <main>
-        <Hero />
-        <Bio />
-        <Music />
-        <Newsletter />
-      </main>
-      <Footer />
-    </div>
+    <main>
+      <Hero />
+      <Bio />
+      <Music />
+      <Newsletter />
+    </main>
   );
 }
