@@ -54,7 +54,7 @@ export default function Music() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-4 gap-6 mb-16">
           {releases.map((release, index) => (
             <motion.a
               key={index}
@@ -94,6 +94,26 @@ export default function Music() {
             </motion.a>
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full"
+        >
+          <iframe 
+            data-testid="embed-iframe" 
+            style={{ borderRadius: "12px" }} 
+            src="https://open.spotify.com/embed/artist/5S0RsBShI3xk8bUix0JfpO?utm_source=generator" 
+            width="100%" 
+            height="352" 
+            frameBorder="0" 
+            allowFullScreen 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy" 
+            title="Spotify Player"
+          />
+        </motion.div>
       </div>
     </section>
   );
