@@ -10,26 +10,30 @@ import art2 from "@assets/a_stairway_to_mid_level_management_1764875387489.jpeg"
 import art3 from "@assets/dancer_1764875387489.jpeg";
 import art4 from "@assets/balloon_machine_2_1764875524054.jpg";
 import art5 from "@assets/brick_face__1764875524054.jpg";
+import PageTransition from "@/components/layout/PageTransition";
+import RevealText from "@/components/ui/reveal-text";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-6xl md:text-8xl font-serif font-bold text-white mb-6">
-              THE ARTIST
-            </h1>
-            <p className="text-xl text-gray-300 leading-relaxed mb-8">
-              Jae Ordon, also known as "Mascot’s Distance," is a genre-defying artist 
-              blending Folk, Jazz, and Rock into a unique sonic tapestry.
-            </p>
-          </motion.div>
+    <PageTransition>
+      <div className="min-h-screen bg-background pt-20">
+        {/* Hero Section */}
+        <section className="relative py-20 px-6 overflow-hidden">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <RevealText 
+                text="THE ARTIST" 
+                className="text-6xl md:text-8xl font-serif font-bold text-white mb-6"
+              />
+              <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                Jae Ordon, also known as "Mascot’s Distance," is a genre-defying artist 
+                blending Folk, Jazz, and Rock into a unique sonic tapestry.
+              </p>
+            </motion.div>
           <div className="relative aspect-[3/4] md:aspect-square">
             <img 
               src={bioImage} 
@@ -146,6 +150,7 @@ export default function About() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </PageTransition>
   );
 }
