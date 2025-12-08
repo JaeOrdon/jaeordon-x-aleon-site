@@ -4,14 +4,17 @@ import Bio from "@/components/sections/Bio";
 import Music from "@/components/sections/Music";
 import Newsletter from "@/components/sections/Newsletter";
 import Footer from "@/components/sections/Footer";
+import PageTransition from "@/components/layout/PageTransition";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <Bio />
-      <Music />
-      <Newsletter />
-    </main>
+    <PageTransition>
+      <main>
+        <Hero />
+        <Bio />
+        <Music />
+        <Newsletter />
+      </main>
+    </PageTransition>
   );
 }
