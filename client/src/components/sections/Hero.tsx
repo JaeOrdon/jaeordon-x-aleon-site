@@ -18,7 +18,7 @@ export default function Hero() {
       </div>
 
       {/* Marquee at bottom of hero - moved to top based on feedback */}
-      <div className="absolute top-20 w-full bg-primary/10 backdrop-blur-md border-y border-primary/20 py-3 z-20">
+      <div className="absolute top-[70px] w-full bg-primary/10 backdrop-blur-md border-y border-primary/20 py-3 z-20">
         <Marquee pauseOnHover className="[--duration:20s]">
           {["NEW ALBUM OUT NOW", " • ", "LISTEN ON SPOTIFY", " • ", "TOUR DATES ANNOUNCED SOON", " • ", "UNCOVER THE SOUND", " • "].map((text, i) => (
             <span key={i} className="text-white font-bold tracking-widest uppercase mx-4 text-sm md:text-base">
