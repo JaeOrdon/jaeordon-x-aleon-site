@@ -17,7 +17,18 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
+      {/* Marquee at bottom of hero - moved to top based on feedback */}
+      <div className="absolute top-20 w-full bg-primary/10 backdrop-blur-md border-y border-primary/20 py-3 z-20">
+        <Marquee pauseOnHover className="[--duration:20s]">
+          {["NEW ALBUM OUT NOW", " • ", "LISTEN ON SPOTIFY", " • ", "TOUR DATES ANNOUNCED SOON", " • ", "UNCOVER THE SOUND", " • "].map((text, i) => (
+            <span key={i} className="text-white font-bold tracking-widest uppercase mx-4 text-sm md:text-base">
+              {text}
+            </span>
+          ))}
+        </Marquee>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center mt-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,17 +68,6 @@ export default function Hero() {
             </Button>
           </div>
         </motion.div>
-      </div>
-
-      {/* Marquee at bottom of hero */}
-      <div className="absolute bottom-0 w-full bg-primary/10 backdrop-blur-md border-t border-primary/20 py-4 z-20">
-        <Marquee pauseOnHover className="[--duration:20s]">
-          {["NEW ALBUM OUT NOW", " • ", "LISTEN ON SPOTIFY", " • ", "TOUR DATES ANNOUNCED SOON", " • ", "UNCOVER THE SOUND", " • "].map((text, i) => (
-            <span key={i} className="text-white font-bold tracking-widest uppercase mx-4 text-sm md:text-base">
-              {text}
-            </span>
-          ))}
-        </Marquee>
       </div>
     </section>
   );
