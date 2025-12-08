@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Merch from "@/pages/Merch";
 import NotFound from "@/pages/not-found";
+import Cursor from "@/components/ui/cursor";
 
 function Router() {
   return (
@@ -25,6 +26,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Toaster />
       <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
+        <Cursor />
         <div className="grain" />
         <Navbar />
         <Router />
