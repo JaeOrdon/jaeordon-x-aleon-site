@@ -15,10 +15,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <nav className="fixed top-0 w-full z-[100] glass border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/">
-          <a className="text-2xl font-serif font-bold tracking-tighter text-white hover:text-primary transition-colors">
+          <a className="text-2xl font-serif font-bold tracking-tighter text-white hover:text-primary transition-colors z-50 relative">
             JAE ORDON
           </a>
         </Link>
@@ -45,8 +45,9 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-white p-2 hover:bg-white/10 rounded-md transition-colors z-50 relative"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
