@@ -19,7 +19,7 @@ export default function Bio() {
               <img 
                 src={bioImage} 
                 alt="Jae Ordon"
-                className="w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-contain hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
