@@ -85,7 +85,6 @@ body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-sans);
-  cursor: none; /* Hide default cursor for custom one */
 }
 
 /* Show default cursor on mobile/touch devices */
