@@ -22,10 +22,10 @@ export default function Preloader() {
       animate={{ opacity: isLoading ? 1 : 0, pointerEvents: isLoading ? "auto" : "none" }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden p-4">
         <motion.h1
           className="text-6xl md:text-9xl font-serif font-bold text-white tracking-tighter"
-          initial={{ y: 100 }}
+          initial={{ y: "100%" }}
           animate={{ y: 0 }}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
