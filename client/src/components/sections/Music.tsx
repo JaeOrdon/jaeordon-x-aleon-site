@@ -106,7 +106,7 @@ export default function Music() {
             style={{ borderRadius: "12px" }} 
             src="https://open.spotify.com/embed/artist/5S0RsBShI3xk8bUix0JfpO?utm_source=generator" 
             width="100%" 
-            height="352" 
+            height="152" 
             frameBorder="0" 
             allowFullScreen 
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
