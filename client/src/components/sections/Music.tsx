@@ -21,7 +21,7 @@ const releases = [
     platform: "Spotify"
   },
   {
-    title: "A Jazzy Plastic Night",
+    title: "A Jazze Plastic Night",
     type: "Playlist",
     image: plasticNightArt,
     link: "https://soundcloud.com/j_ordon/sets/reaching-thru-a-plastic-jazzy?si=82df597d85ca45039a35baf5b4ad1943&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
