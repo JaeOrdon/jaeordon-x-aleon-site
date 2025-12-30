@@ -32,9 +32,6 @@ export default function Navbar() {
               </a>
             </Link>
           ))}
-          <Button variant="ghost" size="icon" className="text-white hover:text-primary">
-            <ShoppingCart size={20} />
-          </Button>
           <Button 
             variant="default" 
             className="bg-primary hover:bg-primary/90 text-black font-bold rounded-none px-6"

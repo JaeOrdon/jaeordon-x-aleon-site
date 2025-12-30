@@ -10,6 +10,12 @@ import art2 from "@assets/a_stairway_to_mid_level_management_1764875387489.jpeg"
 import art3 from "@assets/dancer_1764875387489.jpeg";
 import art4 from "@assets/balloon_machine_2_1764875524054.jpg";
 import art5 from "@assets/brick_face__1764875524054.jpg";
+import art6 from "@assets/keys_piano_dancing_1764875387489.jpg"; // Old Jazzy Plastic Night image
+import art7 from "@assets/walking_boulevard.jpg";
+import art8 from "@assets/saved_drawing.jpg";
+import art9 from "@assets/collage.jpg";
+import art10 from "@assets/beach_contemplation.jpg";
+import art11 from "@assets/front_cover.jpg";
 import PageTransition from "@/components/layout/PageTransition";
 import RevealText from "@/components/ui/reveal-text";
 
@@ -36,7 +42,7 @@ export default function About() {
             </motion.div>
           <div className="relative aspect-[3/4] md:aspect-square">
             <img 
-              src={bioImage} 
+              src={art10} 
               alt="Jae Ordon Portrait" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
@@ -132,7 +138,7 @@ export default function About() {
             VISUAL DIARY
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[art1, art2, art3, art4, art5].map((art, index) => (
+            {[art1, art2, art3, art4, art5, art6, art7, art8, art9, art11].map((art, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
