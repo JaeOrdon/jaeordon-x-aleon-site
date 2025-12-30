@@ -60,11 +60,14 @@ export default function Hero() {
               LATEST DROPS
             </Button>
             <Button 
+              asChild
               size="lg"
               variant="outline"
               className="border-white/20 hover:bg-white/10 text-white text-lg px-8 py-6 rounded-none backdrop-blur-sm transition-all hover:scale-105"
             >
-              WATCH VIDEO
+              <a href="https://www.youtube.com/@midnightcorresponden" target="_blank" rel="noopener noreferrer">
+                YOUTUBE
+              </a>
             </Button>
           </div>
         </motion.div>
