@@ -1,6 +1,6 @@
 import { Play, ArrowUpRight } from "lucide-react";
 import masterpieceArt from "@assets/masterpiece_cover.jpg";
-import plasticNightArt from "@assets/keys_piano_dancing_1764875387489.jpg";
+import plasticNightArt from "@assets/md_ep_adjusted.jpg";
 import heroesArt from "@assets/Scan_2_1764875387489.jpg";
 import madmanArt from "@assets/horpsy_madman_1764875524054.png";
 import { motion } from "framer-motion";

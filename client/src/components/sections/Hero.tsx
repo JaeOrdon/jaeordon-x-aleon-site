@@ -6,14 +6,20 @@ import Marquee from "@/components/ui/marquee";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Jae Ordon"
-          className="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom"
-          style={{ animation: "zoom 20s infinite alternate" }}
-        />
+        <div className="absolute inset-0 pointer-events-none scale-[1.35] w-[300%] h-[300%] -translate-x-1/3 -translate-y-1/3">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/CqL2SR0sxOU?autoplay=1&mute=1&controls=0&loop=1&playlist=CqL2SR0sxOU&playsinline=1&rel=0" 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen
+            className="w-full h-full object-cover opacity-60"
+          ></iframe>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 

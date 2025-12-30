@@ -33,7 +33,6 @@ function App() {
       <Toaster />
       <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
         <Preloader />
-        <Cursor />
         <div className="grain" />
         <Navbar />
         <Router />
