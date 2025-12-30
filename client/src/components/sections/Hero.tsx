@@ -54,10 +54,13 @@ export default function Hero() {
           
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
+              asChild
               size="lg"
               className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-8 py-6 rounded-none transition-all hover:scale-105"
             >
-              LATEST DROPS
+              <a href="https://open.spotify.com/artist/5S0RsBShI3xk8bUix0JfpO?go=1&sp_cid=b054c8449a2b49d6b9fba2e9685f825b&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=c0cbb6eb03c74df2" target="_blank" rel="noopener noreferrer">
+                LATEST DROPS
+              </a>
             </Button>
             <Button 
               asChild
