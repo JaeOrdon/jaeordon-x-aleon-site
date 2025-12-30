@@ -4,8 +4,8 @@ import bioImage from "@assets/you_are_the_light_canvas_1764875387489.jpg";
 
 const stats = [
   { value: "110k+", label: "Total Plays" },
-  { value: "400k", label: "Followers" },
-  { value: "300k+", label: "Views" },
+  { value: "4k", label: "Followers" },
+  { value: "140k", label: "Views" },
 ];
 
 export default function Bio() {
