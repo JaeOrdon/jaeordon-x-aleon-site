@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
-import bioImage from "@assets/you_are_the_light_canvas_1764875387489.jpg";
+import bioImage from "@assets/bio_collage_new.jpg";
 
 const stats = [
   { value: "110k+", label: "Total Plays" },
