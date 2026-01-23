@@ -49,8 +49,13 @@ export default function Newsletter() {
                   <input type="text" name="b_f812dfb74125ef26df993e846_7c1bf13fee" tabIndex={-1} defaultValue="" />
                 </div>
                 <div className="optionalParent">
-                  <div className="clear foot">
+                  <div className="clear foot flex items-center gap-4">
                     <input type="submit" name="subscribe" id="mc-embedded-subscribe" className="button" value="Subscribe" />
+                    <p className="brandingLogo my-0" style={{margin: "0"}}>
+                      <a href="http://eepurl.com/i9ZcQw" title="Mailchimp - email marketing made easy and fun">
+                        <img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg" alt="Mailchimp" style={{height: "30px", width: "auto"}} />
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
