@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
-      <a href="https://open.spotify.com/artist/5S0RsBShI3xk8bUix0JfpO" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-0 block cursor-pointer group">
+      <a href="https://jaeordon.bandcamp.com/track/heroes-in-the-dark" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-0 block cursor-pointer group">
         <img
           src={heroImage}
           alt="Jae Ordon"
