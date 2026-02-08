@@ -25,7 +25,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link) =>
             link.isHash ? (
               <a
                 key={link.name}
@@ -37,18 +37,27 @@ export default function Navbar() {
               </a>
             ) : (
               <Link key={link.name} href={link.href}>
-                <a data-testid={`link-${link.name.toLowerCase()}`} className="text-sm uppercase tracking-widest text-muted-foreground hover:text-white transition-colors">
+                <a
+                  data-testid={`link-${link.name.toLowerCase()}`}
+                  className="text-sm uppercase tracking-widest text-muted-foreground hover:text-white transition-colors"
+                >
                   {link.name}
                 </a>
               </Link>
-            )
-          ))}
-          <Button 
-            variant="default" 
-            className="bg-primary hover:bg-primary/90 text-black font-bold rounded-none px-6"
+            ),
+          )}
+          <a
+            href="https://open.spotify.com/artist/5S0RsBShI3xk8bUix0JfpO"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            LISTEN NOW
-          </Button>
+            <Button
+              variant="default"
+              className="bg-primary hover:bg-primary/90 text-black font-bold rounded-none px-6"
+            >
+              LISTEN NOW
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -68,7 +77,7 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden absolute top-20 left-0 w-full bg-background border-b border-white/10 p-6 flex flex-col gap-6"
         >
-          {navLinks.map((link) => (
+          {navLinks.map((link) =>
             link.isHash ? (
               <a
                 key={link.name}
@@ -81,7 +90,7 @@ export default function Navbar() {
               </a>
             ) : (
               <Link key={link.name} href={link.href}>
-                <a 
+                <a
                   data-testid={`link-${link.name.toLowerCase()}-mobile`}
                   className="text-lg font-medium text-white"
                   onClick={() => setIsOpen(false)}
@@ -89,8 +98,8 @@ export default function Navbar() {
                   {link.name}
                 </a>
               </Link>
-            )
-          ))}
+            ),
+          )}
           <Button className="w-full bg-primary text-black font-bold rounded-none">
             LISTEN NOW
           </Button>
