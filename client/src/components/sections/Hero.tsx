@@ -7,15 +7,15 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+      <a href="https://open.spotify.com/artist/5S0RsBShI3xk8bUix0JfpO" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-0 block cursor-pointer group">
         <img
           src={heroImage}
           alt="Jae Ordon"
-          className="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom"
+          className="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom transition-opacity group-hover:opacity-70"
           style={{ animation: "zoom 20s infinite alternate" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-      </div>
+      </a>
 
       {/* Marquee at bottom of hero - moved to top based on feedback */}
       <div className="absolute top-[70px] w-full bg-primary/10 backdrop-blur-md border-y border-primary/20 py-3 z-20">
