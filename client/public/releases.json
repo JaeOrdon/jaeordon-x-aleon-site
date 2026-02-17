@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Madman's Warehouse",
+    "type": "Latest Release",
+    "imageUrl": "/assets/horpsy_madman_1764875524054.png",
+    "link": "music:album:1843037255",
+    "webLink": "https://music.apple.com/us/album/madmans-warehouse/1843037255?i=1843037324&ls=1&app=music",
+    "platform": "Apple Music",
+    "sortOrder": 1
+  },
+  {
+    "id": 2,
+    "title": "Ain't That Like My Masterpiece",
+    "type": "Single",
+    "imageUrl": "/assets/masterpiece_cover.jpg",
+    "link": "spotify:track:3DPBvXAjOU8vgr8VWeLyTd",
+    "webLink": "https://open.spotify.com/track/3DPBvXAjOU8vgr8VWeLyTd?go=1&si=dda6976d00ee4da1",
+    "platform": "Spotify",
+    "sortOrder": 2
+  },
+  {
+    "id": 3,
+    "title": "A Jazze Plastic Night",
+    "type": "Playlist",
+    "imageUrl": "/assets/md_ep_adjusted.jpg",
+    "link": "https://soundcloud.com/j_ordon/sets/reaching-thru-a-plastic-jazzy",
+    "webLink": "https://soundcloud.com/j_ordon/sets/reaching-thru-a-plastic-jazzy?go=a&si=82df597d85ca45039a35baf5b4ad1943&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    "platform": "SoundCloud",
+    "sortOrder": 3
+  },
+  {
+    "id": 4,
+    "title": "Heroes In The Dark",
+    "type": "Single",
+    "imageUrl": "/assets/Scan_2_1764875387489.jpg",
+    "link": "https://jaeordon.bandcamp.com/track/heroes-in-the-dark",
+    "webLink": "https://jaeordon.bandcamp.com/track/heroes-in-the-dark",
+    "platform": "Bandcamp",
+    "sortOrder": 4
+  }
+]

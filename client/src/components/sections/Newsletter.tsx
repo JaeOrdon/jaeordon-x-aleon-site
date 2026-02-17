@@ -13,7 +13,7 @@ export default function Newsletter() {
   }, []);
 
   return (
-    <section className="py-24 bg-primary relative overflow-hidden">
+    <section id="contact" className="py-24 bg-primary relative overflow-hidden">
       <div className="max-w-3xl mx-auto px-6 relative z-10">
         <div id="mc_embed_shell">
           <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />

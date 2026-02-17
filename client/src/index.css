@@ -115,3 +115,1389 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
 }
+
+/* Nav link animated underline */
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: hsl(var(--primary));
+  transition: width 0.3s ease;
+}
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Nav link click flash — brief text glow + color snap */
+.nav-link-clicked {
+  color: white !important;
+  text-shadow: 0 0 8px hsla(141, 73%, 42%, 0.6), 0 0 20px hsla(141, 73%, 42%, 0.25);
+  transition: text-shadow 0.15s ease-out, color 0.1s ease-out;
+}
+.nav-link-clicked::after {
+  width: 100% !important;
+  background: linear-gradient(90deg, hsl(var(--primary)), rgba(120,180,255,0.8)) !important;
+  box-shadow: 0 0 6px hsla(141, 73%, 42%, 0.5);
+  height: 2px !important;
+}
+
+/* Hero button glow on hover */
+.hero-btn-glow {
+  transition: box-shadow 0.4s ease, transform 0.2s ease;
+}
+.hero-btn-glow:hover {
+  box-shadow: 0 0 20px hsla(141, 73%, 42%, 0.4), 0 0 40px hsla(141, 73%, 42%, 0.15);
+}
+
+/* Listen Now pulse animation */
+.listen-now-pulse {
+  animation: listenPulse 0.6s ease-out;
+}
+@keyframes listenPulse {
+  0% { box-shadow: 0 0 0 0 hsla(141, 73%, 42%, 0.6); }
+  100% { box-shadow: 0 0 0 20px hsla(141, 73%, 42%, 0); }
+}
+
+/* Release card hover effects */
+.release-card {
+  transition: filter 0.3s ease;
+}
+.release-card:hover {
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.5));
+}
+
+/* Glowing border on release image hover */
+.release-img-container {
+  border: 1px solid transparent;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.release-card:hover .release-img-container {
+  border-color: hsla(141, 73%, 42%, 0.3);
+  box-shadow: 0 0 20px hsla(141, 73%, 42%, 0.15), inset 0 0 20px hsla(141, 73%, 42%, 0.05);
+}
+
+/* Shimmer sweep animation on release cards */
+.release-shimmer {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 55%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 1.5s ease-in-out infinite;
+}
+@keyframes shimmerSweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Fancy footer links with glowing underline */
+.footer-link-fancy {
+  overflow: hidden;
+}
+.footer-link-fancy::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.footer-link-fancy:hover::before {
+  transform: scaleX(1);
+}
+.footer-link-fancy::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.3s ease 0.15s;
+}
+.footer-link-fancy:hover::after {
+  transform: translateX(-50%) scale(1);
+}
+
+/* Social icon button hover glow */
+.social-icon-btn:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Spotify Player Animations ===== */
+
+/* Multi-color animated glow border */
+.spotify-glow {
+  background: linear-gradient(
+    135deg,
+    hsla(141, 73%, 42%, 0.5),
+    hsla(16, 100%, 60%, 0.2),
+    hsla(200, 80%, 50%, 0.35),
+    hsla(280, 70%, 55%, 0.15),
+    hsla(141, 73%, 42%, 0.5)
+  );
+  background-size: 400% 400%;
+  animation: glowShift 5s ease-in-out infinite;
+  filter: blur(6px);
+}
+@keyframes glowShift {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+/* Player wrapper hover lift + multiple shadow layers */
+.spotify-player-wrapper {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+}
+.spotify-player-wrapper:hover {
+  transform: translateY(-6px);
+  filter:
+    drop-shadow(0 20px 50px rgba(29, 185, 84, 0.2))
+    drop-shadow(0 8px 20px rgba(255, 107, 53, 0.06));
+}
+
+/* Inner player subtle scale */
+.spotify-player-inner {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.6s ease;
+}
+.spotify-player-wrapper:hover .spotify-player-inner {
+  transform: scale(1.005);
+  box-shadow: inset 0 0 40px rgba(29, 185, 84, 0.04);
+}
+
+/* Ambient floating particles behind the player (purely decorative) */
+.spotify-player-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 10%;
+  width: 80%;
+  height: calc(100% + 40px);
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(29, 185, 84, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(255, 107, 53, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(100, 180, 255, 0.03) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  animation: ambientFloat 8s ease-in-out infinite;
+}
+.spotify-player-wrapper:hover::before {
+  opacity: 1;
+}
+@keyframes ambientFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  33% { transform: translateY(-4px) scale(1.02); }
+  66% { transform: translateY(2px) scale(0.99); }
+}
+
+/* Animated bottom reflection line */
+.spotify-player-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(29, 185, 84, 0.2),
+    rgba(255, 107, 53, 0.15),
+    rgba(29, 185, 84, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: reflectionSweep 3s linear infinite;
+}
+.spotify-player-wrapper:hover::after {
+  opacity: 1;
+}
+@keyframes reflectionSweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Equalizer bar animations */
+.eq-bar {
+  display: inline-block;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.eq-bar-1 {
+  height: 40%;
+  animation: eqBounce1 0.4s infinite alternate;
+}
+.eq-bar-2 {
+  height: 70%;
+  animation: eqBounce2 0.5s infinite alternate;
+}
+.eq-bar-3 {
+  height: 50%;
+  animation: eqBounce3 0.35s infinite alternate;
+}
+.eq-bar-4 {
+  height: 80%;
+  animation: eqBounce4 0.45s infinite alternate;
+}
+@keyframes eqBounce1 {
+  0% { height: 30%; }
+  100% { height: 90%; }
+}
+@keyframes eqBounce2 {
+  0% { height: 60%; }
+  100% { height: 40%; }
+}
+@keyframes eqBounce3 {
+  0% { height: 45%; }
+  100% { height: 100%; }
+}
+@keyframes eqBounce4 {
+  0% { height: 75%; }
+  100% { height: 35%; }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Native cursor stays visible — animated effects are decorative overlay only */
+
+/* ===== Cyber Text Highlight System (Galaxy + Sparkle) ===== */
+
+.cyber-text-highlight {
+  position: relative;
+  --mx: -200px;
+  --my: -200px;
+  --cyber-active: 0;
+  overflow: visible; /* Allow glow to extend beyond container edges */
+}
+
+/* Feathered boundary for all galaxy overlay layers — soft dissolve at edges */
+.cyber-glow-overlay,
+.cyber-galaxy-dust,
+.cyber-galaxy-stars,
+.cyber-galaxy-swirl {
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 0%,
+    black 50%,
+    rgba(0,0,0,0.5) 75%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    black 0%,
+    black 50%,
+    rgba(0,0,0,0.5) 75%,
+    transparent 100%
+  );
+}
+
+/* ---- Galaxy Layer 1: Nebula Cloud Core ---- */
+/* Multiple offset radial gradients create irregular, patchy nebula clouds */
+/* Clear center preserved for readability — glow builds outward */
+.cyber-glow-overlay {
+  position: absolute;
+  inset: -80px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--cyber-active);
+  transition: opacity 0.4s ease;
+  background:
+    /* Core nebula ring — wide clear center for legibility, glow starts further out */
+    radial-gradient(
+      circle 280px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+      transparent 0%,
+      transparent 18%,
+      rgba(29, 185, 84, 0.008) 25%,
+      rgba(29, 185, 84, 0.025) 35%,
+      rgba(40, 200, 120, 0.045) 45%,
+      rgba(60, 180, 220, 0.055) 56%,
+      rgba(120, 80, 200, 0.04) 68%,
+      rgba(29, 185, 84, 0.02) 82%,
+      transparent 100%
+    ),
+    /* Offset warm cloud — pink/magenta shifted up-left */
+    radial-gradient(
+      ellipse 160px 100px at calc(var(--mx) + 50px) calc(var(--my) + 40px),
+      transparent 0%,
+      transparent 28%,
+      rgba(200, 80, 160, 0.025) 45%,
+      rgba(220, 100, 180, 0.04) 58%,
+      rgba(180, 60, 140, 0.02) 72%,
+      transparent 90%
+    ),
+    /* Offset cool cloud — teal shifted down-right */
+    radial-gradient(
+      ellipse 120px 160px at calc(var(--mx) + 110px) calc(var(--my) + 120px),
+      transparent 0%,
+      transparent 28%,
+      rgba(40, 180, 200, 0.025) 45%,
+      rgba(60, 200, 220, 0.035) 58%,
+      rgba(30, 160, 180, 0.015) 72%,
+      transparent 90%
+    ),
+    /* Warm gold accent — small, high up */
+    radial-gradient(
+      ellipse 80px 60px at calc(var(--mx) + 120px) calc(var(--my) + 30px),
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 200, 100, 0.02) 52%,
+      rgba(255, 180, 80, 0.012) 72%,
+      transparent 90%
+    );
+  mix-blend-mode: screen;
+}
+
+/* ---- Galaxy Layer 2: Cosmic Dust + Grain Texture ---- */
+/* Noise texture breaks up smooth gradients into realistic cosmic dust */
+.cyber-galaxy-dust {
+  position: absolute;
+  inset: -80px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--cyber-active);
+  transition: opacity 0.5s ease;
+  mix-blend-mode: screen;
+}
+
+/* Grain texture via SVG noise — masks the glow into dusty patches */
+.cyber-galaxy-dust::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+}
+
+/* Secondary dust clouds — offset patches with different shapes */
+.cyber-galaxy-dust::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* Wispy dust lane — diagonal streak, clear near cursor */
+    radial-gradient(
+      ellipse 220px 40px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+      transparent 0%,
+      transparent 25%,
+      rgba(29, 185, 84, 0.018) 40%,
+      rgba(120, 200, 180, 0.03) 55%,
+      rgba(29, 185, 84, 0.012) 72%,
+      transparent 90%
+    ),
+    /* Small bright knot — offset from cursor center */
+    radial-gradient(
+      circle 40px at calc(var(--mx) + 55px) calc(var(--my) + 100px),
+      transparent 0%,
+      transparent 35%,
+      rgba(160, 120, 255, 0.035) 58%,
+      rgba(120, 80, 200, 0.018) 78%,
+      transparent 100%
+    ),
+    /* Faint outer haze */
+    radial-gradient(
+      circle 320px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+      transparent 0%,
+      transparent 45%,
+      rgba(29, 185, 84, 0.008) 58%,
+      rgba(60, 120, 180, 0.01) 72%,
+      transparent 90%
+    );
+  mix-blend-mode: screen;
+  transform: rotate(-12deg);
+  animation: galaxyDustDrift 6s ease-in-out infinite;
+}
+
+@keyframes galaxyDustDrift {
+  0%, 100% { transform: rotate(-12deg) scale(1); }
+  50% { transform: rotate(-8deg) scale(1.03); }
+}
+
+/* ---- Galaxy Layer 3: Micro Star Field ---- */
+/* Tiny bright points scattered around the cursor via box-shadow */
+.cyber-galaxy-stars {
+  position: absolute;
+  inset: -80px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: var(--cyber-active);
+  transition: opacity 0.5s ease;
+}
+
+.cyber-galaxy-stars::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: calc(var(--mx) + 80px);
+  top: calc(var(--my) + 80px);
+  /* Scattered star field via box-shadow — dimmer near cursor, brighter further out */
+  box-shadow:
+    /* Inner ring — subtle, won't obscure text */
+    -18px -12px 0 0.3px rgba(255, 255, 255, 0.2),
+    22px -8px 0 0.3px rgba(200, 230, 255, 0.18),
+    -8px 20px 0 0.3px rgba(29, 185, 84, 0.22),
+    15px 16px 0 0.3px rgba(255, 200, 150, 0.16),
+    -25px 5px 0 0.3px rgba(180, 160, 255, 0.18),
+    5px -22px 0 0.3px rgba(255, 255, 255, 0.16),
+    28px 2px 0 0.3px rgba(120, 200, 255, 0.16),
+    -14px -24px 0 0.3px rgba(255, 180, 200, 0.14),
+    /* Mid ring — dimmer, further stars */
+    -42px -30px 0 0.3px rgba(255, 255, 255, 0.25),
+    48px -22px 0 0.3px rgba(200, 220, 255, 0.2),
+    -35px 45px 0 0.3px rgba(29, 185, 84, 0.3),
+    40px 38px 0 0.3px rgba(255, 200, 100, 0.22),
+    -55px 10px 0 0.3px rgba(180, 140, 255, 0.2),
+    10px -50px 0 0.3px rgba(255, 255, 255, 0.2),
+    55px -5px 0 0.3px rgba(100, 200, 255, 0.22),
+    -20px 52px 0 0.3px rgba(255, 160, 180, 0.18),
+    32px -42px 0 0.3px rgba(255, 255, 255, 0.2),
+    -50px -18px 0 0.3px rgba(29, 185, 84, 0.22),
+    /* Outer ring — faint distant stars */
+    -80px -55px 0 0.3px rgba(255, 255, 255, 0.1),
+    85px -40px 0 0.3px rgba(200, 200, 255, 0.08),
+    -70px 78px 0 0.3px rgba(29, 185, 84, 0.12),
+    75px 65px 0 0.3px rgba(255, 200, 100, 0.09),
+    -90px 20px 0 0.3px rgba(180, 140, 255, 0.08),
+    15px -85px 0 0.3px rgba(255, 255, 255, 0.08),
+    95px -15px 0 0.3px rgba(100, 200, 255, 0.09),
+    -45px 88px 0 0.3px rgba(255, 180, 220, 0.07),
+    60px -75px 0 0.3px rgba(29, 185, 84, 0.1),
+    -88px -45px 0 0.3px rgba(255, 255, 255, 0.06);
+  animation: galaxyStarsTwinkle 3s ease-in-out infinite;
+}
+
+/* Second star layer — offset for density + different twinkle timing */
+.cyber-galaxy-stars::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: calc(var(--mx) + 80px);
+  top: calc(var(--my) + 80px);
+  box-shadow:
+    -12px 18px 0 0.4px rgba(255, 255, 255, 0.4),
+    20px 12px 0 0.3px rgba(160, 220, 255, 0.35),
+    -30px -16px 0 0.4px rgba(29, 185, 84, 0.4),
+    8px -18px 0 0.3px rgba(255, 220, 160, 0.35),
+    25px -28px 0 0.3px rgba(200, 160, 255, 0.3),
+    -6px 28px 0 0.3px rgba(255, 255, 255, 0.35),
+    -32px 32px 0 0.3px rgba(80, 180, 200, 0.3),
+    35px 25px 0 0.3px rgba(255, 160, 200, 0.28),
+    -48px 55px 0 0.3px rgba(255, 255, 255, 0.15),
+    60px 48px 0 0.3px rgba(29, 185, 84, 0.18),
+    -65px -50px 0 0.3px rgba(200, 180, 255, 0.12),
+    70px -58px 0 0.3px rgba(255, 200, 130, 0.1),
+    -75px 35px 0 0.3px rgba(100, 220, 200, 0.1),
+    50px -70px 0 0.3px rgba(255, 255, 255, 0.1);
+  animation: galaxyStarsTwinkle2 4s ease-in-out infinite;
+}
+
+@keyframes galaxyStarsTwinkle {
+  0%, 100% { opacity: 1; }
+  33% { opacity: 0.6; }
+  66% { opacity: 0.85; }
+}
+
+@keyframes galaxyStarsTwinkle2 {
+  0%, 100% { opacity: 0.7; }
+  40% { opacity: 1; }
+  75% { opacity: 0.5; }
+}
+
+/* ---- Galaxy Layer 4: Spiral Arm Hints ---- */
+/* Conic gradient + rotation creates subtle spiral arm structure */
+.cyber-galaxy-swirl {
+  position: absolute;
+  inset: -80px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--cyber-active);
+  transition: opacity 0.5s ease;
+  background:
+    /* Conic gradient for spiral arm suggestion */
+    conic-gradient(
+      from 30deg at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+      transparent 0deg,
+      rgba(29, 185, 84, 0.03) 30deg,
+      transparent 60deg,
+      rgba(80, 160, 220, 0.025) 110deg,
+      transparent 140deg,
+      rgba(160, 100, 200, 0.02) 200deg,
+      transparent 230deg,
+      rgba(29, 185, 84, 0.025) 290deg,
+      transparent 320deg,
+      rgba(200, 80, 160, 0.015) 350deg,
+      transparent 360deg
+    );
+  mask-image: radial-gradient(
+    circle 250px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+    transparent 15%,
+    black 35%,
+    black 65%,
+    transparent 90%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 250px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+    transparent 15%,
+    black 35%,
+    black 65%,
+    transparent 90%
+  );
+  mix-blend-mode: screen;
+  animation: galaxySwirlRotate 12s linear infinite;
+}
+
+/* Additional spiral arm via pseudo-element — counter-rotates for depth */
+.cyber-galaxy-swirl::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    conic-gradient(
+      from 150deg at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+      transparent 0deg,
+      rgba(200, 120, 180, 0.015) 40deg,
+      transparent 80deg,
+      rgba(29, 185, 84, 0.012) 160deg,
+      transparent 200deg,
+      rgba(60, 160, 240, 0.015) 280deg,
+      transparent 320deg
+    );
+  mask-image: radial-gradient(
+    circle 200px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+    transparent 18%,
+    black 38%,
+    black 62%,
+    transparent 88%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 200px at calc(var(--mx) + 80px) calc(var(--my) + 80px),
+    transparent 18%,
+    black 38%,
+    black 62%,
+    transparent 88%
+  );
+  mix-blend-mode: screen;
+  animation: galaxySwirlCounter 18s linear infinite reverse;
+}
+
+@keyframes galaxySwirlRotate {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
+@keyframes galaxySwirlCounter {
+  from { filter: hue-rotate(0deg) blur(0.5px); }
+  to { filter: hue-rotate(360deg) blur(0.5px); }
+}
+
+/* Thin horizontal scan line at cursor Y position */
+.cyber-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: var(--my);
+  pointer-events: none;
+  z-index: 2;
+  opacity: var(--cyber-active);
+  transition: opacity 0.35s ease;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(29, 185, 84, 0.08) 15%,
+    rgba(80, 120, 255, 0.12) 35%,
+    rgba(29, 185, 84, 0.25) 50%,
+    rgba(160, 80, 220, 0.12) 65%,
+    rgba(29, 185, 84, 0.08) 85%,
+    transparent 100%
+  );
+}
+
+/* Sparkle star particles — spawned by JS, animated by CSS */
+.cyber-sparkle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  width: var(--size, 3px);
+  height: var(--size, 3px);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sparkle-color, rgba(255,255,255,0.9)) 0%, transparent 70%);
+  box-shadow: 0 0 var(--size, 3px) var(--sparkle-color, rgba(255,255,255,0.5));
+  animation: sparkleLife var(--duration, 0.8s) ease-out forwards;
+}
+
+/* Four-point star shape for some sparkles */
+.cyber-sparkle.star-shape {
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.cyber-sparkle.star-shape::before,
+.cyber-sparkle.star-shape::after {
+  content: '';
+  position: absolute;
+  background: var(--sparkle-color, rgba(255,255,255,0.8));
+}
+.cyber-sparkle.star-shape::before {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cyber-sparkle.star-shape::after {
+  height: 1px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes sparkleLife {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  40% {
+    opacity: 0.9;
+    transform: translate(
+      calc(-50% + var(--dx, 0px)),
+      calc(-50% + var(--dy, 0px))
+    ) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+      calc(-50% + var(--dx, 0px) * 2),
+      calc(-50% + var(--dy, 0px) * 2)
+    ) scale(0.3);
+  }
+}
+
+/* ===== Click Ripple Animation ===== */
+.cursor-ripple {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 145, 70, 0.35);
+  animation: cursorRippleExpand 0.6s ease-out forwards;
+}
+.cursor-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 140, 65, 0.18), transparent 70%);
+  animation: cursorRippleFade 0.45s ease-out forwards;
+}
+@keyframes cursorRippleExpand {
+  0% { width: 4px; height: 4px; opacity: 0.6; }
+  100% { width: 55px; height: 55px; opacity: 0; }
+}
+@keyframes cursorRippleFade {
+  0% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+/* ===== Artist Photo Hover & Click Animations ===== */
+
+.artist-photo-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm gradient overlay on hover */
+.artist-photo-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: linear-gradient(
+    160deg,
+    rgba(29, 185, 84, 0.0) 0%,
+    rgba(29, 185, 84, 0.06) 30%,
+    rgba(210, 150, 80, 0.10) 60%,
+    rgba(195, 130, 65, 0.0) 100%
+  );
+  pointer-events: none;
+}
+
+.artist-photo-wrapper:hover::before {
+  opacity: 1;
+}
+
+/* Diagonal light sweep on hover */
+.artist-photo-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 3;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.04) 45%,
+    rgba(255, 255, 255, 0.10) 50%,
+    rgba(255, 255, 255, 0.04) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%) translateY(-100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.artist-photo-wrapper:hover::after {
+  opacity: 1;
+  animation: photoSweep 1.8s ease forwards;
+}
+
+@keyframes photoSweep {
+  0%   { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(50%) translateY(50%); }
+}
+
+/* Photo border glow on hover — green accent */
+.artist-photo-glow {
+  transition: box-shadow 0.6s ease, border-color 0.6s ease, filter 0.6s ease;
+  border: 1px solid transparent;
+}
+.artist-photo-wrapper:hover .artist-photo-glow {
+  border-color: rgba(29, 185, 84, 0.2);
+  box-shadow:
+    0 0 25px rgba(29, 185, 84, 0.10),
+    0 0 60px rgba(210, 150, 80, 0.06),
+    inset 0 0 30px rgba(29, 185, 84, 0.04);
+}
+
+/* Click burst animation */
+@keyframes photoBurst {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(29, 185, 84, 0.3),
+      0 0 0 0 rgba(210, 150, 80, 0.15);
+  }
+  60% {
+    box-shadow:
+      0 0 0 18px rgba(29, 185, 84, 0),
+      0 0 0 35px rgba(210, 150, 80, 0);
+  }
+  100% {
+    box-shadow:
+      0 0 0 18px rgba(29, 185, 84, 0),
+      0 0 0 35px rgba(210, 150, 80, 0);
+  }
+}
+
+.photo-click-burst {
+  animation: photoBurst 0.6s ease-out forwards;
+}
+
+/* ===== Cyber Wave Label (View Visual Diary hover text) ===== */
+
+.cyber-wave-label {
+  position: relative;
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(29, 185, 84, 0.2);
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover state — border glows green */
+.group:hover .cyber-wave-label {
+  border-color: rgba(29, 185, 84, 0.45);
+  box-shadow:
+    0 0 15px rgba(29, 185, 84, 0.10),
+    inset 0 0 20px rgba(29, 185, 84, 0.04);
+}
+
+/* Scan line sweeps horizontally inside the label */
+.cyber-wave-scan {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(29, 185, 84, 0.0) 30%,
+    rgba(29, 185, 84, 0.12) 48%,
+    rgba(29, 185, 84, 0.20) 50%,
+    rgba(29, 185, 84, 0.12) 52%,
+    rgba(29, 185, 84, 0.0) 70%,
+    transparent 100%
+  );
+  opacity: 0;
+}
+.group:hover .cyber-wave-scan {
+  opacity: 1;
+  animation: cyberWaveSweep 1.5s ease-in-out infinite;
+}
+@keyframes cyberWaveSweep {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Glitch-flicker border overlay */
+.cyber-wave-border {
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  z-index: 4;
+  border: 1px solid transparent;
+  opacity: 0;
+}
+.group:hover .cyber-wave-border {
+  animation: cyberWaveGlitch 3s ease-in-out infinite;
+}
+@keyframes cyberWaveGlitch {
+  0%, 92%, 100% { opacity: 0; border-color: transparent; }
+  93% { opacity: 1; border-color: rgba(255, 107, 53, 0.4); transform: translate(1px, 0); }
+  94% { opacity: 0; }
+  96% { opacity: 1; border-color: rgba(29, 185, 84, 0.5); transform: translate(-1px, 0); }
+  97% { opacity: 0; transform: translate(0); }
+}
+
+/* ===== Collage Click Burst Animation ===== */
+
+@keyframes collageBurst {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(29, 185, 84, 0.35),
+      0 0 0 0 rgba(255, 107, 53, 0.2);
+    filter: brightness(1);
+  }
+  20% {
+    filter: brightness(1.15);
+  }
+  50% {
+    box-shadow:
+      0 0 0 20px rgba(29, 185, 84, 0),
+      0 0 0 40px rgba(255, 107, 53, 0);
+    filter: brightness(1.05);
+  }
+  100% {
+    box-shadow:
+      0 0 0 20px rgba(29, 185, 84, 0),
+      0 0 0 40px rgba(255, 107, 53, 0);
+    filter: brightness(1);
+  }
+}
+
+.collage-click-burst {
+  animation: collageBurst 0.7s ease-out forwards;
+}
+
+/* ===== Cyber Widget — Luxurious Platform Stats ===== */
+
+.cyber-widget {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(29, 185, 84, 0.015) 50%,
+    rgba(255, 107, 53, 0.01) 100%
+  );
+  backdrop-filter: blur(4px);
+}
+
+/* Corner accents */
+.cyber-widget::before,
+.cyber-widget::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+.cyber-widget:hover::before,
+.cyber-widget:hover::after { opacity: 0.7; }
+
+.cyber-widget::before {
+  top: 0; left: 0;
+  border-top: 1px solid hsl(var(--accent));
+  border-left: 1px solid hsl(var(--accent));
+}
+.cyber-widget::after {
+  bottom: 0; right: 0;
+  border-bottom: 1px solid hsl(var(--primary));
+  border-right: 1px solid hsl(var(--primary));
+}
+
+/* Animated gradient border — z-index BEHIND content */
+.cyber-widget-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+      hsl(var(--background)),
+      hsl(var(--background))
+    ) padding-box,
+    linear-gradient(
+      135deg,
+      rgba(255, 107, 53, 0.3) 0%,
+      rgba(29, 185, 84, 0.2) 25%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(29, 185, 84, 0.2) 75%,
+      rgba(255, 107, 53, 0.3) 100%
+    ) border-box;
+  background-size: 100% 100%, 300% 300%;
+  animation: widgetBorderFlow 6s ease-in-out infinite;
+}
+@keyframes widgetBorderFlow {
+  0%, 100% { background-position: 0 0, 0% 0%; }
+  50% { background-position: 0 0, 100% 100%; }
+}
+
+/* Horizontal scan line */
+.cyber-widget-scan {
+  position: absolute;
+  left: -60%;
+  top: 0;
+  width: 60%;
+  height: 1px;
+  pointer-events: none;
+  z-index: 15;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(29, 185, 84, 0.12),
+    rgba(29, 185, 84, 0.35),
+    rgba(255, 107, 53, 0.12),
+    transparent
+  );
+  animation: widgetScanLine 5s ease-in-out infinite;
+}
+@keyframes widgetScanLine {
+  0%   { left: -60%; top: 0; }
+  48%  { left: 100%; top: 0; }
+  52%  { left: 100%; top: calc(100% - 1px); }
+  100% { left: -60%; top: calc(100% - 1px); }
+}
+
+/* Pulsing indicator dot */
+.cyber-widget-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  animation: widgetPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 6px hsla(var(--primary), 0.4);
+}
+@keyframes widgetPulse {
+  0%, 100% { opacity: 0.3; box-shadow: 0 0 4px hsla(141, 73%, 42%, 0.2); }
+  50%      { opacity: 1;   box-shadow: 0 0 10px hsla(141, 73%, 42%, 0.5); }
+}
+
+/* Individual platform cell */
+.cyber-widget-cell {
+  position: relative;
+  display: block;
+  padding: 16px 20px;
+  text-decoration: none;
+  transition: background-color 0.4s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+.cyber-widget-cell:last-child { border-right: none; }
+.cyber-widget-cell:nth-child(n+3) { border-bottom: none; }
+@media (min-width: 768px) {
+  .cyber-widget-cell { border-bottom: none; }
+}
+
+.cyber-widget-cell:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* Subtle inner glow on hover */
+.cyber-widget-cell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 70%
+  );
+}
+.cyber-widget-cell:hover::after {
+  opacity: 1;
+}
+
+/* ===== Cyberwave Card System (Review/Critic Cards) ===== */
+
+.cyberwave-card {
+  position: relative;
+  border: 1px solid rgba(29, 185, 84, 0.15);
+  transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.4s ease;
+  backdrop-filter: blur(4px);
+}
+
+.cyberwave-card:hover {
+  border-color: rgba(29, 185, 84, 0.35);
+  box-shadow:
+    0 0 20px rgba(29, 185, 84, 0.08),
+    0 0 50px rgba(29, 185, 84, 0.04),
+    inset 0 0 30px rgba(29, 185, 84, 0.03);
+  transform: translateY(-3px);
+}
+
+/* Animated gradient border glow — flows around the card */
+.cyberwave-border-glow {
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+    linear-gradient(
+      var(--cyberwave-angle, 135deg),
+      rgba(29, 185, 84, 0.5) 0%,
+      rgba(29, 185, 84, 0.1) 20%,
+      rgba(120, 180, 255, 0.2) 40%,
+      rgba(29, 185, 84, 0.05) 60%,
+      rgba(180, 130, 255, 0.15) 80%,
+      rgba(29, 185, 84, 0.5) 100%
+    ) border-box;
+  background-size: 100% 100%, 300% 300%;
+  animation: cyberwaveBorderFlow 4s ease-in-out infinite;
+}
+
+.cyberwave-card:hover .cyberwave-border-glow {
+  opacity: 1;
+}
+
+@keyframes cyberwaveBorderFlow {
+  0%, 100% { background-position: 0 0, 0% 0%; }
+  25% { background-position: 0 0, 100% 0%; }
+  50% { background-position: 0 0, 100% 100%; }
+  75% { background-position: 0 0, 0% 100%; }
+}
+
+/* Horizontal scan line that sweeps down the card */
+.cyberwave-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: -10%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(29, 185, 84, 0.06) 15%,
+    rgba(29, 185, 84, 0.25) 50%,
+    rgba(29, 185, 84, 0.06) 85%,
+    transparent 100%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.cyberwave-card:hover .cyberwave-scan {
+  opacity: 1;
+  animation: cyberwaveScanDown 2.5s ease-in-out infinite;
+}
+
+@keyframes cyberwaveScanDown {
+  0%   { top: -5%; }
+  100% { top: 105%; }
+}
+
+/* ===== Feathered Photo Edges — Global ===== */
+/* Soft vignette mask on all photos so they blend into the dark background */
+
+.about-photo-card img,
+.diary-card img,
+.artist-photo-glow {
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+/* ===== About Page Photo Cards ===== */
+
+.about-photo-card {
+  transition: box-shadow 0.5s ease;
+}
+.about-photo-card:hover {
+  box-shadow:
+    0 0 15px rgba(29, 185, 84, 0.06),
+    0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer sweep on story photos */
+.about-photo-shimmer {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(29, 185, 84, 0.04) 44%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(29, 185, 84, 0.04) 56%,
+    transparent 60%
+  );
+  transform: translateX(-100%) translateY(-100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.about-photo-card:hover .about-photo-shimmer {
+  opacity: 1;
+  animation: photoSweep 1.8s ease forwards;
+}
+
+/* ===== Photo Hover Highlight Frame (non-link images) ===== */
+/* Different from the text CyberTextHighlight — this is a border-focused glow */
+
+.photo-hover-frame {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.photo-hover-frame:hover {
+  border-color: rgba(29, 185, 84, 0.25);
+  box-shadow:
+    0 0 25px rgba(29, 185, 84, 0.06),
+    0 0 60px rgba(29, 185, 84, 0.03),
+    inset 0 1px 0 rgba(29, 185, 84, 0.08);
+}
+
+/* Ambient glow overlay on hover — edges only, not center (opposite of text highlight) */
+.photo-hover-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background:
+    linear-gradient(180deg, rgba(29, 185, 84, 0.06) 0%, transparent 15%),
+    linear-gradient(0deg, rgba(29, 185, 84, 0.08) 0%, transparent 20%),
+    linear-gradient(90deg, rgba(29, 185, 84, 0.04) 0%, transparent 10%),
+    linear-gradient(270deg, rgba(29, 185, 84, 0.04) 0%, transparent 10%);
+}
+.photo-hover-frame:hover .photo-hover-glow {
+  opacity: 1;
+}
+
+/* Diagonal shimmer sweep on gallery photos */
+.photo-hover-shimmer {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    45deg,
+    transparent 42%,
+    rgba(29, 185, 84, 0.03) 46%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(29, 185, 84, 0.03) 54%,
+    transparent 58%
+  );
+  transform: translateX(-100%) translateY(-100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.photo-hover-frame:hover .photo-hover-shimmer {
+  opacity: 1;
+  animation: photoHoverSweep 2s ease forwards;
+}
+
+@keyframes photoHoverSweep {
+  0%   { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(60%) translateY(60%); }
+}
+
+/* ===== Visual Diary — Cinematic Hover Animations ===== */
+
+.diary-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: border-color 0.6s ease, box-shadow 0.6s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.diary-card:hover {
+  border-color: rgba(29, 185, 84, 0.3);
+  box-shadow:
+    0 0 30px rgba(29, 185, 84, 0.08),
+    0 0 80px rgba(29, 185, 84, 0.04),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+}
+
+/* Dark veil overlay — covers image, lifts on hover */
+.diary-dark-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+.diary-card:hover .diary-dark-veil {
+  opacity: 0;
+}
+
+/* Neon glow edges — top/bottom/left/right ambient light on hover */
+.diary-glow-edges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background:
+    linear-gradient(180deg, rgba(29, 185, 84, 0.12) 0%, transparent 12%),
+    linear-gradient(0deg, rgba(29, 185, 84, 0.15) 0%, transparent 18%),
+    linear-gradient(90deg, rgba(80, 140, 255, 0.06) 0%, transparent 8%),
+    linear-gradient(270deg, rgba(180, 100, 255, 0.06) 0%, transparent 8%);
+}
+.diary-card:hover .diary-glow-edges {
+  opacity: 1;
+}
+
+/* Diagonal shimmer sweep — travels diagonally on hover */
+.diary-shimmer {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    42deg,
+    transparent 38%,
+    rgba(29, 185, 84, 0.04) 43%,
+    rgba(255, 255, 255, 0.10) 50%,
+    rgba(29, 185, 84, 0.04) 57%,
+    transparent 62%
+  );
+  transform: translateX(-100%) translateY(-100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.diary-card:hover .diary-shimmer {
+  opacity: 1;
+  animation: diarySweep 2.2s ease forwards;
+}
+
+@keyframes diarySweep {
+  0%   { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(60%) translateY(60%); }
+}
+
+/* Horizontal scan line — sweeps vertically through the card on hover */
+.diary-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: -5%;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(29, 185, 84, 0.08) 20%,
+    rgba(29, 185, 84, 0.30) 50%,
+    rgba(29, 185, 84, 0.08) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px rgba(29, 185, 84, 0.15);
+}
+.diary-card:hover .diary-scan {
+  opacity: 1;
+  animation: diaryScanDown 2s ease-in-out infinite;
+}
+
+@keyframes diaryScanDown {
+  0%   { top: -5%; }
+  100% { top: 105%; }
+}

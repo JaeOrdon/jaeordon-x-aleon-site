@@ -5,7 +5,7 @@ export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
+    <section className="py-10 bg-background relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

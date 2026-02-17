@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
 import PageTransition from "@/components/layout/PageTransition";
 
 export default function Merch() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, []);
+
   return (
     <PageTransition>
       <div className="min-h-screen bg-background pt-20">

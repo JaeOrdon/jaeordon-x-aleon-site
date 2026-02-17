@@ -11,10 +11,11 @@ import NotFound from "@/pages/not-found";
 import Cursor from "@/components/ui/cursor";
 import Preloader from "@/components/ui/preloader";
 import { AnimatePresence } from "framer-motion";
+import { useState, useCallback } from "react";
 
 function Router() {
   const [location] = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Switch location={location} key={location}>
@@ -28,13 +29,21 @@ function Router() {
 }
 
 function App() {
+  // Incrementing key forces React to remount the Preloader, replaying the intro
+  const [preloaderKey, setPreloaderKey] = useState(0);
+
+  const replayIntro = useCallback(() => {
+    setPreloaderKey((k) => k + 1);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
       <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
-        <Preloader />
+        <Preloader key={preloaderKey} />
+        <Cursor />
         <div className="grain" />
-        <Navbar />
+        <Navbar onLogoClick={replayIntro} />
         <Router />
         <Footer />
       </div>
