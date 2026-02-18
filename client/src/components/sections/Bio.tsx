@@ -94,8 +94,8 @@ export default function Bio() {
                   "Also known as 'Mascot's Distance,' crafting Folk-Jazz-Rock compositions that move both Heart and mind."
                 </p>
 
-                <div className="prose prose-invert prose-xl text-gray-400 mb-12">
-                  <p>
+                <div className="prose prose-invert prose-2xl text-gray-300 mb-12">
+                  <p className="text-lg md:text-xl lg:text-2xl leading-relaxed">
                     His artistry has been featured in Time Out New York and recognized by
                     ASCAP's exclusive songwriter workshops. Jae has collaborated with icons
                     connected to Michael McDonald, John Mayer, Christopher Cross, and even

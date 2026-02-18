@@ -124,18 +124,12 @@ export default function About() {
         <section className="py-20 px-6">
           <div className="max-w-4xl mx-auto space-y-12">
             <CyberTextHighlight>
-              <div className="prose prose-invert prose-lg max-w-none">
+              <div className="prose prose-invert prose-xl max-w-none">
                 <p className="font-bold text-xl text-white mb-6">
                   Jim Beard, who was a world renowned jazz pianist for Steely Dan - (referring to Jae's Nashville album), states "Congratulations on a marvelous album Jae!".
                 </p>
                 <p>
-                  This ground breaking album had one of it's recordings entitled Life Whispers On, reach #7 on Canada's Cashbox Radio in the August of 2024.
-                </p>
-                <p>
-                  Disc Jockey Dave Michaels for Albany's  WEXT radio responds to Jae Ordon's music, proclaiming…."These recordings are masterpieces!".
-                </p>
-                <p>
-                  Jae Ordon, (AKA Mascot's Distance) sings his Folk-Jazz-Rock compositions while accompanying himself on piano and guitar has been featured in Time Out New York and was also chosen to be a featured artist at two exclusive ASCAP workshops.  He has worked with Ian Gillan of Deep Purple, Michael McDonald's horn section, member's of John Mayer's band, Christopher Cross's band Robben Ford's bass player Brian Allen, Lori McKenna's drummer Wes Little, Brittany Murphy, Karen and more.
+                  This ground breaking album had one of it's recordings entitled Life Whispers On, reach #7 on Canada's Cashbox Radio in the August of 2024. Disc Jockey Dave Michaels for Albany's WEXT radio responds to Jae Ordon's music, proclaiming…."These recordings are masterpieces!". Jae Ordon, (AKA Mascot's Distance) sings his Folk-Jazz-Rock compositions while accompanying himself on piano and guitar and has been featured in Time Out New York in addition to being chosen to be a featured artist at two exclusive ASCAP workshops. He has worked with Ian Gillan of Deep Purple, Michael McDonald's horn section, members of John Mayer's band, Christopher Cross's band and Robben Ford's bass player Brian Allen, Lori McKenna's drummer Wes Little, Brittany Murphy, Karen Allen and more.
                 </p>
               </div>
             </CyberTextHighlight>
