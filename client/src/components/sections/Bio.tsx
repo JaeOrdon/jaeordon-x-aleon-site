@@ -47,30 +47,16 @@ export default function Bio() {
               <motion.img
                 src={bioImage}
                 alt="Jae Ordon - Click to view Visual Diary"
-                className="w-full h-full object-contain artist-photo-glow transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
               />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-600 pointer-events-none z-[4]" />
 
               {/* "View Visual Diary" label — cyber wave animation on hover */}
               <div className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-center pb-6 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
                 <span className="cyber-wave-label">
-                  {/* Scan line sweeps across the label on hover */}
                   <span className="cyber-wave-scan" />
-                  {/* Glitch flicker border */}
                   <span className="cyber-wave-border" />
                   <span className="relative z-10">View Visual Diary</span>
                 </span>
-              </div>
-
-              {/* Corner accents on hover */}
-              <div className="absolute top-3 left-3 w-8 h-8 pointer-events-none z-[5]">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary/0 group-hover:from-primary/50 to-transparent transition-all duration-500" />
-                <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-primary/0 group-hover:from-primary/50 to-transparent transition-all duration-500" />
-              </div>
-              <div className="absolute bottom-3 right-3 w-8 h-8 pointer-events-none z-[5]">
-                <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-accent/0 group-hover:from-accent/40 to-transparent transition-all duration-500 delay-100" />
-                <div className="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-accent/0 group-hover:from-accent/40 to-transparent transition-all duration-500 delay-100" />
               </div>
             </div>
           </motion.div>

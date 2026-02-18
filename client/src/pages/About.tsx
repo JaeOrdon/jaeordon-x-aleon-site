@@ -78,11 +78,11 @@ export default function About() {
               <CyberTextHighlight>
                 <RevealText
                   text="THE ARTIST"
-                  className="text-6xl md:text-8xl font-serif font-bold text-white mb-6"
+                  className="text-4xl sm:text-6xl md:text-8xl font-serif font-bold text-white mb-4 md:mb-6"
                 />
               </CyberTextHighlight>
               <CyberTextHighlight>
-                <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-6 md:mb-8">
                   Jae Ordon, also known as "Mascot's Distance," is a genre-defying artist
                   blending Folk, Jazz, and Rock into a unique sonic tapestry.
                 </p>
@@ -103,28 +103,16 @@ export default function About() {
               <motion.img
                 src={art10}
                 alt="Jae Ordon Portrait"
-                className="w-full h-full object-cover artist-photo-glow grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-700"
               />
-              {/* Gradient overlay that shifts on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-600 pointer-events-none z-[4]" />
 
-              {/* "View Visual Diary" label — cyber wave animation on hover */}
-              <div className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-center pb-8 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+              {/* "View Visual Diary" label — visible on mobile, hover-reveal on desktop */}
+              <div className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-center pb-8 opacity-100 md:opacity-0 translate-y-0 md:translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
                 <span className="cyber-wave-label">
                   <span className="cyber-wave-scan" />
                   <span className="cyber-wave-border" />
                   <span className="relative z-10">View Visual Diary</span>
                 </span>
-              </div>
-
-              {/* Corner accents that appear on hover */}
-              <div className="absolute top-3 left-3 w-8 h-8 pointer-events-none z-[5]">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary/0 group-hover:from-primary/50 to-transparent transition-all duration-500" />
-                <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-primary/0 group-hover:from-primary/50 to-transparent transition-all duration-500" />
-              </div>
-              <div className="absolute bottom-3 right-3 w-8 h-8 pointer-events-none z-[5]">
-                <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-accent/0 group-hover:from-accent/40 to-transparent transition-all duration-500 delay-100" />
-                <div className="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-accent/0 group-hover:from-accent/40 to-transparent transition-all duration-500 delay-100" />
               </div>
             </motion.div>
           </div>
@@ -152,7 +140,7 @@ export default function About() {
               </div>
             </CyberTextHighlight>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
               {[
                 { src: pianoImage, alt: "Jae at the piano" },
                 { src: liveImage, alt: "Jae performing live" },
@@ -160,7 +148,7 @@ export default function About() {
               ].map((photo, i) => (
                 <motion.div
                   key={i}
-                  className="w-full h-64 md:h-auto relative group overflow-hidden about-photo-card"
+                  className="w-full h-56 sm:h-64 md:h-auto relative group overflow-hidden about-photo-card"
                   initial={{ opacity: 0, y: 40, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -170,21 +158,8 @@ export default function About() {
                   <img
                     src={photo.src}
                     alt={photo.alt}
-                    className="w-full h-full object-contain bg-black/20 transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                    className="w-full h-full object-contain bg-black/20 transition-all duration-700 group-hover:scale-105"
                   />
-                  {/* Shimmer sweep overlay */}
-                  <div className="about-photo-shimmer" />
-                  {/* Glow border overlay */}
-                  <div className="absolute inset-0 pointer-events-none border border-transparent group-hover:border-primary/20 transition-all duration-500 z-[3]" />
-                  {/* Corner accents */}
-                  <div className="absolute top-2 left-2 w-6 h-6 pointer-events-none z-[5]">
-                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary/0 group-hover:from-primary/40 to-transparent transition-all duration-500" />
-                    <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-primary/0 group-hover:from-primary/40 to-transparent transition-all duration-500" />
-                  </div>
-                  <div className="absolute bottom-2 right-2 w-6 h-6 pointer-events-none z-[5]">
-                    <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-accent/0 group-hover:from-accent/30 to-transparent transition-all duration-500 delay-75" />
-                    <div className="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-accent/0 group-hover:from-accent/30 to-transparent transition-all duration-500 delay-75" />
-                  </div>
                 </motion.div>
               ))}
             </div>
@@ -194,12 +169,12 @@ export default function About() {
         {/* Reviews Section */}
         <section className="py-20 px-6 bg-white/5">
           <div className="max-w-7xl mx-auto">
-            <CyberTextHighlight className="inline-block mx-auto w-full text-center mb-12">
-              <h2 className="text-4xl font-serif font-bold text-white">
+            <CyberTextHighlight className="inline-block mx-auto w-full text-center mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
                 CRITICS SAY
               </h2>
             </CyberTextHighlight>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
               {[
                 {
                   quote: "\"Mascot's Distance, at last an original sound in that spiny, sparkling streak of sardonic American music occupied by Steely Dan. Very reminiscent of the seductive hooks & jazz influenced energy featured in the great work of The Style Council.\"",
@@ -262,70 +237,51 @@ export default function About() {
         </section>
 
         {/* Visual Art Gallery */}
-        <section id="visual-diary" className="py-20 px-6 bg-card">
+        <section id="visual-diary" className="py-12 md:py-20 px-4 md:px-6 bg-card">
           <div className="max-w-7xl mx-auto">
-            <CyberTextHighlight className="inline-block mx-auto w-full text-center mb-12">
-              <h2 className="text-4xl font-serif font-bold text-white">
+            <CyberTextHighlight className="inline-block mx-auto w-full text-center mb-6 md:mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
                 VISUAL DIARY
               </h2>
             </CyberTextHighlight>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
               {[art1, art2, art3, art4, art5, art6, art7, art8, art9, art11].map((art, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 60, scale: 0.9, filter: "blur(6px)" }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.15 }}
+                  initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{
-                    duration: 0.9,
-                    delay: (index % 3) * 0.12,
+                    duration: 0.7,
+                    delay: (index % 2) * 0.1,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="h-[500px] relative group overflow-hidden bg-black/20 diary-card"
+                  className="h-[220px] sm:h-[320px] md:h-[500px] relative group overflow-hidden bg-black/20 diary-card"
                 >
-                  {/* Image — grayscale to color on hover with scale + brightness */}
-                  <img
+                  {/* Image — cinematic reveal: starts cool-tinted, warms on scroll-in */}
+                  <motion.img
                     src={art}
                     alt={`Artwork ${index + 1}`}
-                    className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-[900ms] ease-out group-hover:scale-[1.06] group-hover:brightness-110"
+                    className="w-full h-full object-contain md:object-cover transition-all duration-700 ease-out group-hover:scale-[1.06]"
+                    initial={{ opacity: 0, scale: 1.08 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 1.2, delay: (index % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   />
 
-                  {/* Dark cinematic overlay — lifts to reveal on hover */}
-                  <div className="diary-dark-veil" />
 
-                  {/* Neon glow edges */}
-                  <div className="diary-glow-edges" />
-
-                  {/* Diagonal shimmer sweep on hover */}
-                  <div className="diary-shimmer" />
-
-                  {/* Horizontal scan line that sweeps on hover */}
-                  <div className="diary-scan" />
-
-                  {/* Corner brackets that animate in */}
-                  <div className="absolute top-3 left-3 w-8 h-8 pointer-events-none z-[6]">
-                    <div className="absolute top-0 left-0 w-0 group-hover:w-full h-[1px] bg-primary/60 transition-all duration-500 ease-out" />
-                    <div className="absolute top-0 left-0 h-0 group-hover:h-full w-[1px] bg-primary/60 transition-all duration-500 ease-out delay-75" />
-                  </div>
-                  <div className="absolute top-3 right-3 w-8 h-8 pointer-events-none z-[6]">
-                    <div className="absolute top-0 right-0 w-0 group-hover:w-full h-[1px] bg-primary/40 transition-all duration-500 ease-out delay-100" />
-                    <div className="absolute top-0 right-0 h-0 group-hover:h-full w-[1px] bg-primary/40 transition-all duration-500 ease-out delay-150" />
-                  </div>
-                  <div className="absolute bottom-3 left-3 w-8 h-8 pointer-events-none z-[6]">
-                    <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[1px] bg-accent/40 transition-all duration-500 ease-out delay-150" />
-                    <div className="absolute bottom-0 left-0 h-0 group-hover:h-full w-[1px] bg-accent/40 transition-all duration-500 ease-out delay-200" />
-                  </div>
-                  <div className="absolute bottom-3 right-3 w-8 h-8 pointer-events-none z-[6]">
-                    <div className="absolute bottom-0 right-0 w-0 group-hover:w-full h-[1px] bg-accent/60 transition-all duration-500 ease-out delay-200" />
-                    <div className="absolute bottom-0 right-0 h-0 group-hover:h-full w-[1px] bg-accent/60 transition-all duration-500 ease-out delay-250" />
-                  </div>
-
-                  {/* Bottom label that slides up on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 z-[7] flex items-center justify-center pb-5 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out delay-100 pointer-events-none">
-                    <span className="text-[9px] uppercase tracking-[0.35em] text-white/50 bg-black/40 backdrop-blur-md px-4 py-2 border border-white/10">
+                  {/* Bottom label — always visible on mobile, hover-reveal on desktop */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 z-[7] flex items-center justify-center pb-3 md:pb-5 md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 0.7, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                  >
+                    <span className="text-[8px] md:text-[9px] uppercase tracking-[0.35em] text-white/50 bg-black/40 backdrop-blur-md px-3 md:px-4 py-1.5 md:py-2">
                       Artwork {index + 1}
                     </span>
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

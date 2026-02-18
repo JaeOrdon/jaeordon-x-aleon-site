@@ -133,7 +133,7 @@ export default function Music() {
         </div>
 
         {isLoading ? (
-          <div className="grid md:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-16">
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="animate-pulse">
                 <div className="aspect-square bg-white/5 mb-6" />
@@ -143,7 +143,7 @@ export default function Music() {
             ))}
           </div>
         ) : (
-          <div className="grid md:grid-cols-4 gap-6 mb-16" style={{ perspective: "1200px" }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-16" style={{ perspective: "1200px" }}>
             {releases.map((release, index) => (
               <motion.a
                 key={release.id}
@@ -166,14 +166,14 @@ export default function Music() {
                       src={release.imageUrl}
                       alt={release.title}
                       data-testid={`img-release-${release.id}`}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                     />
                     {/* Gradient overlay that shifts on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/40 group-hover:via-transparent transition-all duration-500" />
 
                     {/* Animated play button — spins in on hover */}
-                    <div className="absolute bottom-6 right-6 w-14 h-14 bg-primary rounded-full flex items-center justify-center opacity-0 scale-50 rotate-180 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 transition-all duration-500 ease-out shadow-lg shadow-primary/30">
-                      <Play fill="black" className="text-black ml-1" size={22} />
+                    <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 w-9 h-9 md:w-14 md:h-14 bg-primary rounded-full flex items-center justify-center opacity-0 scale-50 rotate-180 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 transition-all duration-500 ease-out shadow-lg shadow-primary/30">
+                      <Play fill="black" className="text-black ml-0.5 md:ml-1" size={14} />
                     </div>
 
                     {/* Shimmer sweep on hover */}
@@ -187,7 +187,7 @@ export default function Music() {
                   <div data-testid={`text-type-${release.id}`} className="text-xs font-bold tracking-widest text-accent uppercase">
                     {release.type}
                   </div>
-                  <h4 data-testid={`text-title-${release.id}`} className="text-2xl font-serif font-bold text-white group-hover:text-primary transition-colors duration-300 leading-tight">
+                  <h4 data-testid={`text-title-${release.id}`} className="text-sm sm:text-lg md:text-2xl font-serif font-bold text-white group-hover:text-primary transition-colors duration-300 leading-tight">
                     {release.title}
                   </h4>
                   <p data-testid={`text-platform-${release.id}`} className="text-muted-foreground text-sm inline-flex items-center gap-1.5 group-hover:text-white transition-all duration-300">

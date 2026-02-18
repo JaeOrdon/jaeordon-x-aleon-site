@@ -1267,21 +1267,6 @@ html {
   100% { top: 105%; }
 }
 
-/* ===== Feathered Photo Edges — Global ===== */
-/* Soft vignette mask on all photos so they blend into the dark background */
-
-.about-photo-card img,
-.diary-card img,
-.artist-photo-glow {
-  mask-image:
-    linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-composite: intersect;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-composite: source-in;
-}
 
 /* ===== About Page Photo Cards ===== */
 
@@ -1390,21 +1375,24 @@ html {
 
 .diary-card {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  transition: border-color 0.6s ease, box-shadow 0.6s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
 }
 
-.diary-card:hover {
-  border-color: rgba(29, 185, 84, 0.3);
-  box-shadow:
-    0 0 30px rgba(29, 185, 84, 0.08),
-    0 0 80px rgba(29, 185, 84, 0.04),
-    0 20px 60px rgba(0, 0, 0, 0.5);
+.diary-card:hover,
+.diary-card:active {
   transform: translateY(-8px);
 }
 
-/* Dark veil overlay — covers image, lifts on hover */
+/* Mobile: reduce lift amount */
+@media (max-width: 767px) {
+  .diary-card:hover,
+  .diary-card:active {
+    transform: translateY(-3px);
+  }
+}
+
+/* Dark veil overlay — covers image, lifts on hover (desktop only) */
 .diary-dark-veil {
   position: absolute;
   inset: 0;
@@ -1419,27 +1407,17 @@ html {
   opacity: 1;
   transition: opacity 0.8s ease;
 }
-.diary-card:hover .diary-dark-veil {
+.diary-card:hover .diary-dark-veil,
+.diary-card:active .diary-dark-veil {
   opacity: 0;
+}
+/* Mobile: veil much lighter so images are visible without hover */
+@media (max-width: 767px) {
+  .diary-dark-veil {
+    opacity: 0.3;
+  }
 }
 
-/* Neon glow edges — top/bottom/left/right ambient light on hover */
-.diary-glow-edges {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  background:
-    linear-gradient(180deg, rgba(29, 185, 84, 0.12) 0%, transparent 12%),
-    linear-gradient(0deg, rgba(29, 185, 84, 0.15) 0%, transparent 18%),
-    linear-gradient(90deg, rgba(80, 140, 255, 0.06) 0%, transparent 8%),
-    linear-gradient(270deg, rgba(180, 100, 255, 0.06) 0%, transparent 8%);
-}
-.diary-card:hover .diary-glow-edges {
-  opacity: 1;
-}
 
 /* Diagonal shimmer sweep — travels diagonally on hover */
 .diary-shimmer {

@@ -10,6 +10,7 @@ import Merch from "@/pages/Merch";
 import NotFound from "@/pages/not-found";
 import Cursor from "@/components/ui/cursor";
 import Preloader from "@/components/ui/preloader";
+import TouchScrollGlow from "@/components/ui/touch-scroll-glow";
 import { AnimatePresence } from "framer-motion";
 import { useState, useCallback } from "react";
 
@@ -42,6 +43,7 @@ function App() {
       <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
         <Preloader key={preloaderKey} />
         <Cursor />
+        <TouchScrollGlow />
         <div className="grain" />
         <Navbar onLogoClick={replayIntro} />
         <Router />

@@ -26,12 +26,12 @@ export default function Newsletter() {
             #mc_embed_signup input.email { border: 1px solid rgba(0,0,0,0.2); border-radius: 0; padding: 1rem; min-height: 50px; }
           `}</style>
           <div id="mc_embed_signup">
-            <form 
-              action="https://jaeordon.us16.list-manage.com/subscribe/post?u=f812dfb74125ef26df993e846&amp;id=7c1bf13fee&amp;f_id=00c21ee1f0" 
-              method="post" 
-              id="mc-embedded-subscribe-form" 
-              name="mc-embedded-subscribe-form" 
-              className="validate" 
+            <form
+              action="https://jaeordon.us16.list-manage.com/subscribe/post?u=f812dfb74125ef26df993e846&amp;id=7c1bf13fee&amp;f_id=00c21ee1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              className="validate"
               target="_blank"
             >
               <div id="mc_embed_signup_scroll">
