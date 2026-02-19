@@ -12,7 +12,17 @@ import Cursor from "@/components/ui/cursor";
 import Preloader from "@/components/ui/preloader";
 import TouchScrollGlow from "@/components/ui/touch-scroll-glow";
 import { AnimatePresence } from "framer-motion";
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
+
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: false }; }
+  componentDidCatch() { this.setState({ hasError: false }); }
+  render() { return this.props.children; }
+}
 
 function Router() {
   const [location] = useLocation();
@@ -40,15 +50,17 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
-      <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
-        <Preloader key={preloaderKey} />
-        <Cursor />
-        <TouchScrollGlow />
-        <div className="grain" />
-        <Navbar onLogoClick={replayIntro} />
-        <Router />
-        <Footer />
-      </div>
+      <ErrorBoundary>
+        <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
+          <Preloader key={preloaderKey} />
+          <Cursor />
+          <TouchScrollGlow />
+          <div className="grain" />
+          <Navbar onLogoClick={replayIntro} />
+          <Router />
+          <Footer />
+        </div>
+      </ErrorBoundary>
     </QueryClientProvider>
   );
 }

@@ -54,10 +54,10 @@ export default function TouchScrollGlow() {
     }[] = [];
 
     function resize() {
-      if (!canvas) return;
+      if (!canvas || !ctx) return;
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
 
@@ -100,7 +100,7 @@ export default function TouchScrollGlow() {
       // Decay scroll velocity
       scrollVelocity *= 0.92;
 
-      if (glowOpacity > 0.005) {
+      if (glowOpacity > 0.005 && glowRadius > 0 && isFinite(touchX) && isFinite(touchY)) {
         const r = glowRadius * pulseScale;
 
         // Layer 1: Outer soft nebula wash
@@ -164,6 +164,7 @@ export default function TouchScrollGlow() {
 
     // Touch event handlers
     function onTouchStart(e: TouchEvent) {
+      if (e.touches.length > 1) { touchActive = false; return; } // pinch — skip
       const touch = e.touches[0];
       touchX = touch.clientX;
       touchY = touch.clientY;
@@ -173,6 +174,7 @@ export default function TouchScrollGlow() {
     }
 
     function onTouchMove(e: TouchEvent) {
+      if (e.touches.length > 1) { touchActive = false; return; } // pinch — skip
       const touch = e.touches[0];
       touchX = touch.clientX;
       touchY = touch.clientY;
