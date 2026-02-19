@@ -125,7 +125,7 @@ export default function About() {
           <div className="max-w-4xl mx-auto space-y-12">
             <CyberTextHighlight>
               <div className="prose prose-invert prose-xl max-w-none">
-                <p className="font-bold text-xl text-white mb-6">
+                <p className="font-bold text-xl md:text-2xl lg:text-3xl text-white mb-6">
                   Jim Beard, who was a world renowned jazz pianist for Steely Dan - (referring to Jae's Nashville album), states "Congratulations on a marvelous album Jae!".
                 </p>
                 <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed">
