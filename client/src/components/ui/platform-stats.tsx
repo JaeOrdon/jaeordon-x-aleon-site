@@ -55,7 +55,7 @@ const platforms: Platform[] = [
     icon: SP_ICON,
     color: "#1DB954",
     stats: [
-      { label: "Monthly Listeners", value: 19, suffix: "" },
+      { label: "Monthly Listeners", value: 20, suffix: "" },
       { label: "Streams", value: 31, suffix: "k+" },
     ],
     link: "https://open.spotify.com/artist/5S0RsBShI3xk8bUix0JfpO?go=1",
