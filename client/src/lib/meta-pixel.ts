@@ -1,9 +1,10 @@
 /**
  * Meta Pixel + Conversions API (CAPI) tracking utility
- * Pixel ID: 1423356802700638
+ * Pixel ID: 908766851903323 (jaeordon.com dataset)
  *
  * Client-side: fires fbq() events via the pixel script in index.html
- * Server-side: sends the same events to Meta CAPI via a Netlify function
+ * Server-side: sends the same events to Meta CAPI via Cloudflare Pages Function
+ * Deduplication: every event gets a matching eventID in both channels
  */
 
 declare global {
@@ -12,7 +13,17 @@ declare global {
   }
 }
 
-const PIXEL_ID = '1423356802700638';
+const PIXEL_ID = '908766851903323';
+
+function generateEventId(): string {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
+
+function getCookie(name: string): string | undefined {
+  if (typeof document === 'undefined') return undefined;
+  const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
+  return match ? match[2] : undefined;
+}
 
 // ── Client-side pixel helpers ──────────────────────────────────────────
 
@@ -24,16 +35,19 @@ function fbq(...args: any[]) {
 
 // ── Server-side CAPI helper ────────────────────────────────────────────
 
-async function sendCAPI(eventName: string, params: Record<string, any> = {}) {
+async function sendCAPI(eventName: string, eventId: string, params: Record<string, any> = {}) {
   try {
-    await fetch('/.netlify/functions/meta-capi', {
+    await fetch('/api/capi', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         event_name: eventName,
+        event_id: eventId,
         event_time: Math.floor(Date.now() / 1000),
         event_source_url: window.location.href,
         user_agent: navigator.userAgent,
+        fbp: getCookie('_fbp'),
+        fbc: getCookie('_fbc'),
         ...params,
       }),
     });
@@ -42,18 +56,18 @@ async function sendCAPI(eventName: string, params: Record<string, any> = {}) {
   }
 }
 
-// ── Dual-fire: sends to both pixel + CAPI ──────────────────────────────
+// ── Dual-fire with deduplication ──────────────────────────────────────
 
 function trackEvent(eventName: string, params: Record<string, any> = {}) {
-  // Client-side pixel
-  fbq('track', eventName, params);
-  // Server-side CAPI
-  sendCAPI(eventName, params);
+  const eventId = generateEventId();
+  fbq('track', eventName, params, { eventID: eventId });
+  sendCAPI(eventName, eventId, params);
 }
 
 function trackCustomEvent(eventName: string, params: Record<string, any> = {}) {
-  fbq('trackCustom', eventName, params);
-  sendCAPI(eventName, params);
+  const eventId = generateEventId();
+  fbq('trackCustom', eventName, params, { eventID: eventId });
+  sendCAPI(eventName, eventId, params);
 }
 
 // ── Public tracking functions ──────────────────────────────────────────
@@ -87,12 +101,12 @@ export function trackReleaseClick(title: string, platform: string, releaseType: 
 }
 
 /** Track newsletter signup */
-export function trackNewsletterSignup() {
-  trackEvent('Lead', {
+export function trackNewsletterSignup(email?: string) {
+  trackEvent('Subscribe', {
     content_name: 'Newsletter Signup',
     content_category: 'Email',
   });
-  trackCustomEvent('NewsletterSignup', {});
+  trackCustomEvent('NewsletterSignup', { email });
 }
 
 /** Track "Listen Now" CTA in navbar */

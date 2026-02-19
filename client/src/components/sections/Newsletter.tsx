@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { trackNewsletterSignup } from "@/lib/meta-pixel";
 
 export default function Newsletter() {
   useEffect(() => {
@@ -40,6 +41,10 @@ export default function Newsletter() {
               name="mc-embedded-subscribe-form"
               className="validate"
               target="_blank"
+              onSubmit={() => {
+                const emailInput = document.getElementById('mce-EMAIL') as HTMLInputElement;
+                trackNewsletterSignup(emailInput?.value);
+              }}
             >
               <div id="mc_embed_signup_scroll">
                 <h2>Subscribe to get exclusive updates on new tracks, tour dates, and behind-the-scenes.</h2>
