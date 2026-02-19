@@ -226,12 +226,15 @@ export default function TouchScrollGlow() {
     }
 
     // Zoom detection — Safari fires gesturestart/gestureend during pinch
+    // Hide the canvas element entirely to remove it as a compositor layer
     function onGestureStart() {
       zooming = true;
       touchActive = false;
+      if (canvas) canvas.style.visibility = "hidden";
     }
     function onGestureEnd() {
       zooming = false;
+      if (canvas) canvas.style.visibility = "visible";
     }
 
     window.addEventListener("touchstart", onTouchStart, { passive: true });

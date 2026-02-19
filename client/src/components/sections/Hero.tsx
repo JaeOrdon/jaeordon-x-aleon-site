@@ -89,7 +89,7 @@ export default function Hero() {
             </motion.span>
           </CyberTextHighlight>
           <CyberTextHighlight>
-            <h1 className="text-6xl md:text-8xl font-serif font-bold leading-tight text-white mix-blend-overlay">
+            <h1 className="text-5xl md:text-8xl font-serif font-bold leading-tight text-white">
               <AnimatedWord text="UNCOVER" startIndex={0} />
               <br />
               <span className="italic">
