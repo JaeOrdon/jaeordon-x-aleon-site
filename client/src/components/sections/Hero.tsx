@@ -57,7 +57,7 @@ export default function Hero() {
 
       {/* Marquee at top */}
       <motion.div
-        className="absolute top-[70px] w-full bg-primary/10 backdrop-blur-md border-y border-primary/20 py-3 z-20"
+        className="absolute top-[70px] w-full bg-black/80 border-y border-primary/20 py-3 z-20"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.6 }}
@@ -83,7 +83,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-              className="text-accent font-bold tracking-widest uppercase text-sm inline-block border-b border-accent pb-1"
+              className="text-accent font-bold tracking-widest uppercase text-2xl md:text-3xl inline-block border-b border-accent pb-1"
             >
               Folk-Jazz-Rock Fusion
             </motion.span>
@@ -131,7 +131,7 @@ export default function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/20 hover:bg-white/10 text-white text-lg px-8 py-6 rounded-none backdrop-blur-sm transition-all"
+                className="border-white/20 hover:bg-white/10 text-white text-lg px-8 py-6 rounded-none transition-all"
               >
                 <a href="https://www.youtube.com/@midnightcorresponden" target="_blank" rel="noopener noreferrer">
                   YOUTUBE

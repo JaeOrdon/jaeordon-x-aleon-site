@@ -36,6 +36,12 @@ export default function TouchScrollGlow() {
     let lastTouchY = 0;
     let scrollVelocity = 0;
 
+    // Zoom detection — pause during pinch-zoom to avoid Safari GPU crash
+    let zooming = false;
+
+    // RAF loop control — idle optimization
+    let rafId = 0;
+
     // Glow state (smoothed for animation)
     let glowOpacity = 0;
     let glowRadius = 120;
@@ -80,87 +86,111 @@ export default function TouchScrollGlow() {
     }
 
     function draw() {
-      if (!animating || !ctx || !canvas) return;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      ctx.clearRect(0, 0, w, h);
+      if (!animating) return;
 
-      // Smooth glow opacity toward target
-      const targetOpacity = touchActive ? Math.min(0.35 + Math.abs(scrollVelocity) * 0.008, 0.6) : 0;
-      glowOpacity += (targetOpacity - glowOpacity) * 0.12;
-
-      // Pulse effect driven by scroll velocity
-      glowPulse += 0.06;
-      const pulseScale = 1 + Math.sin(glowPulse) * 0.08;
-
-      // Dynamic radius based on velocity
-      const targetRadius = 100 + Math.min(Math.abs(scrollVelocity) * 0.8, 80);
-      glowRadius += (targetRadius - glowRadius) * 0.1;
-
-      // Decay scroll velocity
-      scrollVelocity *= 0.92;
-
-      if (glowOpacity > 0.005 && glowRadius > 0 && isFinite(touchX) && isFinite(touchY)) {
-        const r = glowRadius * pulseScale;
-
-        // Layer 1: Outer soft nebula wash
-        const outerGrad = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, r * 1.8);
-        outerGrad.addColorStop(0, `hsla(141, 73%, 42%, ${glowOpacity * 0.15})`);
-        outerGrad.addColorStop(0.3, `hsla(220, 80%, 55%, ${glowOpacity * 0.08})`);
-        outerGrad.addColorStop(0.6, `hsla(280, 70%, 50%, ${glowOpacity * 0.04})`);
-        outerGrad.addColorStop(1, "transparent");
-        ctx.fillStyle = outerGrad;
-        ctx.fillRect(0, 0, w, h);
-
-        // Layer 2: Core glow — brighter, tighter
-        const coreGrad = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, r);
-        coreGrad.addColorStop(0, `hsla(141, 73%, 55%, ${glowOpacity * 0.3})`);
-        coreGrad.addColorStop(0.2, `hsla(141, 73%, 42%, ${glowOpacity * 0.15})`);
-        coreGrad.addColorStop(0.5, `hsla(220, 80%, 60%, ${glowOpacity * 0.06})`);
-        coreGrad.addColorStop(1, "transparent");
-        ctx.fillStyle = coreGrad;
-        ctx.fillRect(0, 0, w, h);
-
-        // Layer 3: Tiny bright center dot
-        const dotGrad = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, 8);
-        dotGrad.addColorStop(0, `hsla(141, 80%, 70%, ${glowOpacity * 0.5})`);
-        dotGrad.addColorStop(1, "transparent");
-        ctx.fillStyle = dotGrad;
-        ctx.fillRect(touchX - 10, touchY - 10, 20, 20);
+      // Skip frames entirely during pinch-zoom
+      if (zooming || !ctx || !canvas) {
+        rafId = requestAnimationFrame(draw);
+        return;
       }
 
-      // Draw and update sparkles
-      for (let i = sparkles.length - 1; i >= 0; i--) {
-        const s = sparkles[i];
-        s.x += s.vx;
-        s.y += s.vy;
-        s.life -= 1 / 60 / s.maxLife;
+      try {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        ctx.clearRect(0, 0, w, h);
 
-        if (s.life <= 0) {
-          sparkles.splice(i, 1);
-          continue;
+        // Smooth glow opacity toward target
+        const targetOpacity = touchActive ? Math.min(0.35 + Math.abs(scrollVelocity) * 0.008, 0.6) : 0;
+        glowOpacity += (targetOpacity - glowOpacity) * 0.12;
+
+        // Pulse effect driven by scroll velocity
+        glowPulse += 0.06;
+        const pulseScale = 1 + Math.sin(glowPulse) * 0.08;
+
+        // Dynamic radius based on velocity
+        const targetRadius = 100 + Math.min(Math.abs(scrollVelocity) * 0.8, 80);
+        glowRadius += (targetRadius - glowRadius) * 0.1;
+
+        // Decay scroll velocity
+        scrollVelocity *= 0.92;
+
+        if (glowOpacity > 0.005 && glowRadius > 0 && isFinite(touchX) && isFinite(touchY)) {
+          const r = glowRadius * pulseScale;
+
+          // Layer 1: Outer soft nebula wash
+          const outerGrad = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, r * 1.8);
+          outerGrad.addColorStop(0, `hsla(141, 73%, 42%, ${glowOpacity * 0.15})`);
+          outerGrad.addColorStop(0.3, `hsla(220, 80%, 55%, ${glowOpacity * 0.08})`);
+          outerGrad.addColorStop(0.6, `hsla(280, 70%, 50%, ${glowOpacity * 0.04})`);
+          outerGrad.addColorStop(1, "transparent");
+          ctx.fillStyle = outerGrad;
+          ctx.fillRect(0, 0, w, h);
+
+          // Layer 2: Core glow — brighter, tighter
+          const coreGrad = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, r);
+          coreGrad.addColorStop(0, `hsla(141, 73%, 55%, ${glowOpacity * 0.3})`);
+          coreGrad.addColorStop(0.2, `hsla(141, 73%, 42%, ${glowOpacity * 0.15})`);
+          coreGrad.addColorStop(0.5, `hsla(220, 80%, 60%, ${glowOpacity * 0.06})`);
+          coreGrad.addColorStop(1, "transparent");
+          ctx.fillStyle = coreGrad;
+          ctx.fillRect(0, 0, w, h);
+
+          // Layer 3: Tiny bright center dot
+          const dotGrad = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, 8);
+          dotGrad.addColorStop(0, `hsla(141, 80%, 70%, ${glowOpacity * 0.5})`);
+          dotGrad.addColorStop(1, "transparent");
+          ctx.fillStyle = dotGrad;
+          ctx.fillRect(touchX - 10, touchY - 10, 20, 20);
         }
 
-        const alpha = s.life * 0.6;
-        // Glow
-        ctx.beginPath();
-        const sGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size * 3);
-        sGrad.addColorStop(0, `hsla(${s.hue}, 73%, 65%, ${alpha})`);
-        sGrad.addColorStop(1, "transparent");
-        ctx.fillStyle = sGrad;
-        ctx.arc(s.x, s.y, s.size * 3, 0, Math.PI * 2);
-        ctx.fill();
+        // Draw and update sparkles
+        for (let i = sparkles.length - 1; i >= 0; i--) {
+          const s = sparkles[i];
+          s.x += s.vx;
+          s.y += s.vy;
+          s.life -= 1 / 60 / s.maxLife;
 
-        // Core
-        ctx.beginPath();
-        ctx.fillStyle = `hsla(${s.hue}, 80%, 85%, ${alpha * 0.8})`;
-        ctx.arc(s.x, s.y, s.size * 0.5, 0, Math.PI * 2);
-        ctx.fill();
+          if (s.life <= 0) {
+            sparkles.splice(i, 1);
+            continue;
+          }
+
+          const alpha = s.life * 0.6;
+          // Glow
+          ctx.beginPath();
+          const sGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size * 3);
+          sGrad.addColorStop(0, `hsla(${s.hue}, 73%, 65%, ${alpha})`);
+          sGrad.addColorStop(1, "transparent");
+          ctx.fillStyle = sGrad;
+          ctx.arc(s.x, s.y, s.size * 3, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Core
+          ctx.beginPath();
+          ctx.fillStyle = `hsla(${s.hue}, 80%, 85%, ${alpha * 0.8})`;
+          ctx.arc(s.x, s.y, s.size * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Idle optimization: stop RAF loop when nothing to draw
+        if (!touchActive && glowOpacity < 0.001 && sparkles.length === 0) {
+          rafId = 0;
+          return;
+        }
+      } catch {
+        // Skip frame on any canvas error
       }
 
-      requestAnimationFrame(draw);
+      rafId = requestAnimationFrame(draw);
     }
-    requestAnimationFrame(draw);
+
+    function startLoop() {
+      if (!rafId && animating) {
+        rafId = requestAnimationFrame(draw);
+      }
+    }
+
+    startLoop();
 
     // Touch event handlers
     function onTouchStart(e: TouchEvent) {
@@ -171,6 +201,7 @@ export default function TouchScrollGlow() {
       lastTouchY = touch.clientY;
       touchActive = true;
       scrollVelocity = 0;
+      startLoop();
     }
 
     function onTouchMove(e: TouchEvent) {
@@ -194,18 +225,32 @@ export default function TouchScrollGlow() {
       touchActive = false;
     }
 
+    // Zoom detection — Safari fires gesturestart/gestureend during pinch
+    function onGestureStart() {
+      zooming = true;
+      touchActive = false;
+    }
+    function onGestureEnd() {
+      zooming = false;
+    }
+
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("touchend", onTouchEnd, { passive: true });
     window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    window.addEventListener("gesturestart", onGestureStart as EventListener, { passive: true });
+    window.addEventListener("gestureend", onGestureEnd as EventListener, { passive: true });
     window.addEventListener("resize", resize);
 
     return () => {
       animating = false;
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("touchcancel", onTouchEnd);
+      window.removeEventListener("gesturestart", onGestureStart as EventListener);
+      window.removeEventListener("gestureend", onGestureEnd as EventListener);
       window.removeEventListener("resize", resize);
     };
   }, []);

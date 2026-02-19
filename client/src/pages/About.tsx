@@ -82,7 +82,7 @@ export default function About() {
                 />
               </CyberTextHighlight>
               <CyberTextHighlight>
-                <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-6 md:mb-8">
+                <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 leading-relaxed mb-6 md:mb-8">
                   Jae Ordon, also known as "Mascot's Distance," is a genre-defying artist
                   blending Folk, Jazz, and Rock into a unique sonic tapestry.
                 </p>
@@ -272,7 +272,7 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.5, duration: 0.5 }}
                   >
-                    <span className="text-[8px] md:text-[9px] uppercase tracking-[0.35em] text-white/50 bg-black/40 backdrop-blur-md px-3 md:px-4 py-1.5 md:py-2">
+                    <span className="text-[8px] md:text-[9px] uppercase tracking-[0.35em] text-white/50 bg-black/80 px-3 md:px-4 py-1.5 md:py-2">
                       Artwork {index + 1}
                     </span>
                   </motion.div>

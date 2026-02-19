@@ -55,6 +55,7 @@ function TiltCard({
   function handleMouse(e: React.MouseEvent) {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
     x.set((e.clientX - rect.left) / rect.width - 0.5);
     y.set((e.clientY - rect.top) / rect.height - 0.5);
   }
@@ -111,7 +112,7 @@ export default function Music() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <CyberTextHighlight>
-              <h2 className="text-sm font-bold tracking-widest text-accent uppercase mb-4">
+              <h2 className="text-2xl font-bold tracking-widest text-accent uppercase mb-4">
                 Discography
               </h2>
               <h3 className="text-5xl font-serif font-bold text-white">
@@ -184,7 +185,7 @@ export default function Music() {
                 </TiltCard>
 
                 <div className="space-y-2">
-                  <div data-testid={`text-type-${release.id}`} className="text-xs font-bold tracking-widest text-accent uppercase">
+                  <div data-testid={`text-type-${release.id}`} className="text-base md:text-lg font-bold tracking-widest text-accent uppercase">
                     {release.type}
                   </div>
                   <h4 data-testid={`text-title-${release.id}`} className="text-sm sm:text-lg md:text-2xl font-serif font-bold text-white group-hover:text-primary transition-colors duration-300 leading-tight">

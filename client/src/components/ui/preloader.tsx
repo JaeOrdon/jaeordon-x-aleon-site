@@ -17,10 +17,10 @@ function ParticleField() {
     const dpr = window.devicePixelRatio || 1;
 
     function resize() {
-      if (!canvas) return;
+      if (!canvas || !ctx) return;
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
-      ctx!.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
 

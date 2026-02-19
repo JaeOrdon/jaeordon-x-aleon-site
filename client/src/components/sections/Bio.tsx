@@ -64,7 +64,7 @@ export default function Bio() {
           <div className="md:col-span-7 order-1 md:order-2 md:pl-12">
             <CyberTextHighlight>
               <motion.h2
-                className="text-sm font-bold tracking-widest text-accent uppercase mb-4"
+                className="text-2xl font-bold tracking-widest text-accent uppercase mb-4"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -90,12 +90,12 @@ export default function Bio() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <CyberTextHighlight>
-                <p className="text-2xl md:text-3xl font-serif leading-relaxed text-gray-200 mb-8">
+                <p className="text-3xl md:text-4xl font-serif leading-relaxed text-gray-200 mb-8">
                   "Also known as 'Mascot's Distance,' crafting Folk-Jazz-Rock compositions that move both Heart and mind."
                 </p>
 
                 <div className="prose prose-invert prose-2xl text-gray-300 mb-12">
-                  <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed">
+                  <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed">
                     His artistry has been featured in Time Out New York and recognized by
                     ASCAP's exclusive songwriter workshops. Jae has collaborated with icons
                     connected to Michael McDonald, John Mayer, Christopher Cross, and even

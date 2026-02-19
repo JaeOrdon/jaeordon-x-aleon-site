@@ -18,12 +18,13 @@ export default function Newsletter() {
         <div id="mc_embed_shell">
           <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
           <style>{`
-            #mc_embed_signup { background: transparent; clear: left; font: 14px Helvetica,Arial,sans-serif; width: 100%; }
+            #mc_embed_signup { background: transparent; clear: left; font: 20px Helvetica,Arial,sans-serif; width: 100%; }
             #mc_embed_signup h2 { font-weight: bold; font-size: 2rem; margin-bottom: 2rem; color: black; font-family: 'Playfair Display', serif; }
-            #mc_embed_signup .mc-field-group label { color: black; font-weight: bold; }
+            #mc_embed_signup .mc-field-group label { color: black; font-weight: bold; font-size: 24px; }
+            #mc_embed_signup .indicates-required { font-size: 20px; }
             #mc_embed_signup .button { background-color: black; color: white; border-radius: 0; height: 50px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; padding: 0 2rem; transition: all 0.3s; }
             #mc_embed_signup .button:hover { background-color: rgba(0,0,0,0.8); }
-            #mc_embed_signup input.email { border: 1px solid rgba(0,0,0,0.2); border-radius: 0; padding: 1rem; min-height: 50px; }
+            #mc_embed_signup input.email { border: 1px solid rgba(0,0,0,0.2); border-radius: 0; padding: 1rem; min-height: 50px; font-size: 20px; }
           `}</style>
           <div id="mc_embed_signup">
             <form

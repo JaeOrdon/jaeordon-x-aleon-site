@@ -12,17 +12,7 @@ import Cursor from "@/components/ui/cursor";
 import Preloader from "@/components/ui/preloader";
 import TouchScrollGlow from "@/components/ui/touch-scroll-glow";
 import { AnimatePresence } from "framer-motion";
-import React, { useState, useCallback } from "react";
-
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { hasError: boolean }
-> {
-  state = { hasError: false };
-  static getDerivedStateFromError() { return { hasError: false }; }
-  componentDidCatch() { this.setState({ hasError: false }); }
-  render() { return this.props.children; }
-}
+import { useState, useCallback } from "react";
 
 function Router() {
   const [location] = useLocation();
@@ -50,7 +40,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
-      <ErrorBoundary>
         <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-black">
           <Preloader key={preloaderKey} />
           <Cursor />
@@ -60,7 +49,6 @@ function App() {
           <Router />
           <Footer />
         </div>
-      </ErrorBoundary>
     </QueryClientProvider>
   );
 }
