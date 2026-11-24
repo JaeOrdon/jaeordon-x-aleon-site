@@ -27,7 +27,7 @@ export default function Footer() {
             JAE ORDON
           </motion.h2>
           <p className="text-muted-foreground text-sm">
-            &copy; 2026 Jae Ordon Music. All rights reserved.
+            &copy; 2027 Jae Ordon Music. All rights reserved.
           </p>
         </CyberTextHighlight>
 
