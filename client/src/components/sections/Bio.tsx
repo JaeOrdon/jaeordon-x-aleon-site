@@ -2,7 +2,7 @@ import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
 import { useLocation } from "wouter";
-import bioImage from "@assets/bio_collage_new.jpg";
+import bioImage from "@assets/bio_collage_new_2.jpg";
 import CyberTextHighlight from "@/components/ui/cyber-text";
 import PlatformStats from "@/components/ui/platform-stats";
 
